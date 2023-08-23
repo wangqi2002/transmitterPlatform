@@ -48,7 +48,6 @@ onUnmounted(() => {
   .main-wrap {
     width: calc(100% - 20px);
     height: calc(100% - 20px);
-    background-color: #166DBB;
     padding: 10px;
   }
 }
