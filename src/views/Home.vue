@@ -17,15 +17,18 @@ import { ref } from 'vue'
 .container_layout {
   width: 100%;
   height: 100%;
+  position: relative;
   display: grid;
   grid-template-columns: 3fr 4fr 2fr;
   grid-gap: 10px;
   grid-auto-rows: 3.5fr 2.9fr 1.7fr 2fr;
+  pointer-events: none;
 
   .card {
     background: rgba(12, 12, 52, 0.4);
     border: 1px solid #112665;
     border-radius: 8px;
+    pointer-events: auto;
   }
 
   .main_view {
@@ -33,6 +36,9 @@ import { ref } from 'vue'
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 4;
+    border: none;
+    background: none;
+    pointer-events: none;
   }
 
   .env_monitor {
