@@ -8,9 +8,9 @@
 </template>
 
 <script setup>
-import Home from './components/Home.vue'
+import Home from './views/Home.vue'
 import { ref, onMounted, onUnmounted } from 'vue'
-import { getScale, width, height } from './utils/getScales'
+import { getScale, width, height } from './units/getScales'
 
 const scale = ref(getScale())
 const timer = ref(true)
@@ -44,8 +44,10 @@ onUnmounted(() => {
   transition: all .3s linear;
 
   .main-wrap {
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    background-color: #166DBB;
+    padding: 10px;
   }
 }
 </style>
