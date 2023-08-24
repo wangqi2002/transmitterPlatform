@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import Navigation from "../components/module/Navigation.vue"
+import Navigation from "../components/module/navigation.vue"
 import EnvMonitor from "../components/env_monitor.vue"
 import ConditionMonitor from "../components/condition_monitor.vue"
 import TransmitterMonitor from "../components/transmitter_monitor.vue"
@@ -80,6 +80,10 @@ import { ref } from 'vue'
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
+
+    // ::v-deep .monitor_title {
+    //   background-color: antiquewhite;
+    // }
   }
 
   .solid_state_monitor {
