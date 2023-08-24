@@ -1,6 +1,8 @@
 <template>
   <div class="container_layout">
-    <div class="main_view card"></div>
+    <div class="main_view card">
+      <Navigation></Navigation>
+    </div>
     <div class="env_monitor card">
       <EnvMonitor></EnvMonitor>
     </div>
@@ -20,6 +22,7 @@
 </template>
 
 <script setup>
+import Navigation from "../components/module/Navigation.vue"
 import EnvMonitor from "../components/env_monitor.vue"
 import ConditionMonitor from "../components/condition_monitor.vue"
 import TransmitterMonitor from "../components/transmitter_monitor.vue"
@@ -52,9 +55,10 @@ import { ref } from 'vue'
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 4;
+    padding: 5px 0px 5px 10px;
     border: none;
     background: none;
-    pointer-events: none;
+    // pointer-events: none;
   }
 
   .env_monitor {
