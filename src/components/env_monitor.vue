@@ -3,14 +3,78 @@
         <div class="header">
             <MonitorTitle title="环境检测"></MonitorTitle>
         </div>
-        <div class="left_aside"></div>
-        <div class="right_aside"></div>
+        <div class="left_aside">
+            <SingleGradientAreaLine name="温度" chartId="temperature" :option="option1"></SingleGradientAreaLine>
+        </div>
+        <div class="right_aside">
+            <SingleGradientAreaLine name="湿度" chartId="humidness" :option="option2"></SingleGradientAreaLine>
+        </div>
     </div>
 </template>
 
 <script setup>
 import MonitorTitle from "./module/monitor_title.vue";
-import { ref, onMounted } from "vue";
+import SingleGradientAreaLine from "./chart/line/single_gradient_area_line.vue";
+import { ref, onMounted, getCurrentInstance } from "vue";
+
+const { proxy } = getCurrentInstance();
+
+const option1 = {
+    series: [
+        {
+            name: '温度',
+            type: 'line',
+            smooth: true,
+            lineStyle: {
+                width: 2,
+                color: 'rgb(9, 247, 173, 1)'
+            },
+            // showSymbol: false,
+            areaStyle: {
+                opacity: 0.7,
+                color: new proxy.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    {
+                        offset: 0,
+                        color: 'rgb(9, 247, 173, 1)'
+                    },
+                    {
+                        offset: 1,
+                        color: 'rgb(9, 247, 173, 0)'
+                    }
+                ])
+            },
+            data: [140, 232, 101, 264, 90, 340, 250]
+        }
+    ]
+};
+const option2 = {
+    series: [
+        {
+            name: '湿度',
+            type: 'line',
+            smooth: true,
+            lineStyle: {
+                width: 2,
+                color: 'rgb(51, 223, 253, 1)'
+            },
+            // showSymbol: false,
+            areaStyle: {
+                opacity: 0.7,
+                color: new proxy.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                    {
+                        offset: 0,
+                        color: 'rgb(51, 223, 253, 1)'
+                    },
+                    {
+                        offset: 1,
+                        color: 'rgb(51, 223, 253, 0)'
+                    }
+                ])
+            },
+            data: [80, 120, 181, 164, 290, 250, 340]
+        }
+    ]
+};
 </script>
 
 <style scoped lang="scss">

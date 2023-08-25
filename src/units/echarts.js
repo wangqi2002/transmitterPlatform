@@ -26,10 +26,10 @@ echarts.use([
     GridComponent,
     DatasetComponent,
     TransformComponent,
-    BarChart,
     LabelLayout,
     UniversalTransition,
     CanvasRenderer,
+    BarChart,
     LineChart,
 ]);
 
