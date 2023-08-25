@@ -15,8 +15,8 @@ const props = defineProps({
     chartId: String,
     option: Object
 })
+// todo: 确定怎么配置option 1.全用外部  2.样式用外部   （所有表格都存在这个问题）
 let option = {
-    color: ['#00DDFF'],
     backgroundColor: 'rgba(12, 12, 52, 0)',
     tooltip: {
         trigger: 'axis',
@@ -38,6 +38,11 @@ let option = {
         {
             type: 'category',
             boundaryGap: false,
+            axisLabel: {
+                //坐标轴 标签
+                show: true, //是否显示
+                color: '#B5B5C5'
+            },
             data: ['0', '2', '4', '6', '8', '10']
         }
     ],
@@ -50,7 +55,7 @@ let option = {
             splitLine: {
                 show: true,
                 lineStyle: {
-                    color: '#16266F'
+                    color: 'rgba(44, 78, 175, 0.8)'
                 }
             }
         }
@@ -85,7 +90,7 @@ let option = {
 
 const chartInit = () => {
     option.series = props.option.series
-    let myChart = proxy.$echarts.init(document.getElementById(props.chartId), 'dark');
+    let myChart = proxy.$echarts.init(document.getElementById(props.chartId));
     option && myChart.setOption(option);
 }
 

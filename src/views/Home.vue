@@ -37,7 +37,7 @@ import { ref } from 'vue'
   height: 100%;
   position: relative;
   display: grid;
-  grid-template-columns: 3fr 4fr 2fr;
+  grid-template-columns: 5fr 10fr 4fr;
   grid-gap: 10px;
   grid-auto-rows: 3.5fr 2.9fr 1.7fr 2fr;
   pointer-events: none;
