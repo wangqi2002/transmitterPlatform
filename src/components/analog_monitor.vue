@@ -192,7 +192,7 @@ const option = {
 
         .analog_item {
             display: inline-block;
-            width: 95px;
+            width: 90px;
             height: 21px;
             margin: 4px 0px 0px 4px;
             vertical-align: middle;
@@ -203,7 +203,7 @@ const option = {
                 display: inline-block;
                 vertical-align: middle;
                 line-height: 21px;
-                width: 48px;
+                width: 42px;
                 height: 100%;
                 color: #B5B5C5;
             }

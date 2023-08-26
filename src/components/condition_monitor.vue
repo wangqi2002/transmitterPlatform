@@ -3,12 +3,17 @@
         <div class="header">
             <MonitorTitle title="状态监测"></MonitorTitle>
         </div>
-        <div class="left_aside"></div>
-        <div class="right_aside"></div>
+        <div class="left_aside">
+            <ConditionItem name="1#组" chartId="cond_1" num="3"></ConditionItem>
+        </div>
+        <div class="right_aside">
+            <ConditionItem name="2#组" chartId="cond_2" num="2"></ConditionItem>
+        </div>
     </div>
 </template>
 
 <script setup>
+import ConditionItem from "./module/condition_item.vue";
 import MonitorTitle from "./module/monitor_title.vue";
 import { ref, onMounted } from "vue";
 </script>

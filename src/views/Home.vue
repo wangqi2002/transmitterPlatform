@@ -36,6 +36,7 @@ import { ref } from 'vue'
   width: 100%;
   height: 100%;
   position: relative;
+  user-select: none;
   display: grid;
   grid-template-columns: 5fr 10fr 4fr;
   grid-gap: 10px;
