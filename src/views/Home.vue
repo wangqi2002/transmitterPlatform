@@ -1,7 +1,7 @@
 <template>
   <div class="container_layout">
     <div class="main_view card">
-      <Navigation></Navigation>
+      <MainView></MainView>
     </div>
     <div class="env_monitor card">
       <EnvMonitor></EnvMonitor>
@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import Navigation from "../components/module/navigation.vue"
+import MainView from "../components/main_view.vue"
 import EnvMonitor from "../components/env_monitor.vue"
 import ConditionMonitor from "../components/condition_monitor.vue"
 import TransmitterMonitor from "../components/transmitter_monitor.vue"
