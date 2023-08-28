@@ -110,6 +110,7 @@ const handleSet = (e) => {
             color: #FFFFFF;
             display: inline-block;
             cursor: pointer;
+            pointer-events: auto;
             position: relative;
         }
 

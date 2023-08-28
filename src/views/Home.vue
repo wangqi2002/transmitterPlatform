@@ -59,7 +59,7 @@ import { ref } from 'vue'
     padding: 5px 0px 5px 10px;
     border: none;
     background: none;
-    // pointer-events: none;
+    pointer-events: none;
   }
 
   .env_monitor {

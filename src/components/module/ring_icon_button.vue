@@ -33,6 +33,7 @@ onMounted(() => {
     height: 120px;
     margin: 20px auto;
     // background-color: rgba(58, 126, 227, 0.2);
+    pointer-events: auto;
     position: relative;
 
     .ring_btn_out {

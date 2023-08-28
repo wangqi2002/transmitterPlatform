@@ -8,6 +8,7 @@
 <script setup>
 import BottomLineBox from "../../module/bottom_line_box.vue";
 import { ref, onMounted, getCurrentInstance, nextTick } from "vue";
+import emitter from "../../../units/mittBus"
 
 const { proxy } = getCurrentInstance();
 const props = defineProps({
