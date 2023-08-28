@@ -19,8 +19,8 @@
 import MonitorTitle from "./module/monitor_title.vue";
 import DoubleGradientAreaLine from "./chart/line/double_gradient_area_line.vue";
 import { ref, onMounted, getCurrentInstance } from "vue";
-
-const { proxy } = getCurrentInstance();
+import emitter from "../units/mittBus"
+import { getRandomInt, formatter } from "../units/tools"
 
 const analogList = ref([
     { name: '灯丝流', value: '400A' },
@@ -32,139 +32,46 @@ const analogList = ref([
     { name: '阳压', value: '13kV' },
     { name: '帘栅压', value: '1.2kW' },
 ])
+let data1 = [0, 10, 30, 56, 35, 50, 68, 85, 72, 90]
+let data2 = [5, 15, 25, 27, 40, 50, 55, 75, 80, 95]
+let count = 1
 const option = {
-    color: ['#80FFA5', '#00DDFF'],
-    backgroundColor: 'rgba(12, 12, 52, 0)',
-    tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-            type: 'cross',
-            label: {
-                backgroundColor: '#6a7985'
-            }
-        }
-    },
     legend: {
-        data: ['灯丝流', '灯丝压'],
-        textStyle: {
-            color: '#B5B5C5'
-        }
+        data: ['灯丝流', '灯丝压']
     },
-    grid: {
-        top: '10%',
-        bottom: '10%',
-        containLabel: false
-    },
-    xAxis: [
-        {
-            type: 'category',
-            boundaryGap: false,
-            axisLine: {
-                show: true,
-                lineStyle: {
-                    color: '#B5B5C5'
-                }
-            },
-            axisTick: {
-                show: false,
-                lineStyle: {
-                    color: '#B5B5C5'
-                }
-            },
-            axisLabel: {
-                //坐标轴 标签
-                show: false, //是否显示
-                color: '#B5B5C5'
-            },
-            data: []
-        }
-    ],
-    yAxis: [
-        {
-            type: 'value',
-            min: 'dataMin',
-            max: 'dataMax',
-            axisLabel: {
-                //坐标轴 标签
-                show: true, //是否显示
-                color: '#B5B5C5'
-            },
-            splitLine: {
-                //grid 区域中的分隔线
-                show: false,
-            }
-        },
-        {
-            type: 'value',
-            min: 'dataMin',
-            max: 'dataMax',
-            axisLabel: {
-                //坐标轴 标签
-                show: true, //是否显示
-                color: '#B5B5C5'
-            },
-            splitLine: {
-                //grid 区域中的分隔线
-                show: false,
-            }
-        }
-    ],
     series: [
         {
-            name: '灯丝流',
-            type: 'line',
-            smooth: true,
-            lineStyle: {
-                width: 2
-            },
-            showSymbol: false,
-            areaStyle: {
-                opacity: 0.8,
-                color: new proxy.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                    {
-                        offset: 0,
-                        color: 'rgb(128, 255, 165)'
-                    },
-                    {
-                        offset: 1,
-                        color: 'rgb(1, 191, 236)'
-                    }
-                ])
-            },
-            emphasis: {
-                focus: 'series'
-            },
-            data: [100, 1802, 180, 2020, 278, 3280, 210, 1300, 130, 2900]
+            data: data1
         },
         {
-            name: '灯丝压',
-            type: 'line',
-            smooth: true,
-            yAxisIndex: 1,
-            lineStyle: {
-                width: 2
-            },
-            showSymbol: false,
-            areaStyle: {
-                opacity: 0.8,
-                color: new proxy.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                    {
-                        offset: 0,
-                        color: 'rgb(0, 221, 255)'
-                    },
-                    {
-                        offset: 1,
-                        color: 'rgb(77, 119, 255)'
-                    }
-                ])
-            },
-            emphasis: {
-                focus: 'series'
-            },
-            data: [200, 442, 611, 904, 850, 1100, 1230, 1310, 1503, 1420]
+            data: data2
         }
     ]
 };
+onMounted(() => {
+    setInterval(function () {
+        if (count > 20) {
+            count = 1
+            data1 = [0, 10, 30, 56, 35, 50, 68, 85, 72, 90]
+            data2 = [5, 15, 25, 27, 40, 50, 55, 75, 80, 95]
+        }
+        let coefficient1 = formatter(2).format(count / getRandomInt(1, 5))
+        let coefficient2 = formatter(2).format(count / getRandomInt(1, 5))
+        data1.shift();
+        data1.push(getRandomInt(100 * coefficient1, 130 * coefficient1));
+        data2.shift();
+        data2.push(getRandomInt(80 * coefficient2, 120 * coefficient2));
+        emitter.emit("chart:analog", [
+            {
+                data: data1
+            },
+            {
+                data: data2
+            }
+        ])
+        count++
+    }, 2000);
+})
 </script>
 
 <style scoped lang="scss">

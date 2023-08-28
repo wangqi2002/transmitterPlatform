@@ -7,6 +7,7 @@
 <script setup>
 import BottomLineBox from "../../module/bottom_line_box.vue";
 import { ref, onMounted, getCurrentInstance, nextTick } from "vue";
+import emitter from "../../../units/mittBus"
 
 const { proxy } = getCurrentInstance();
 const props = defineProps({
@@ -17,6 +18,7 @@ const props = defineProps({
 
 let option = {
     color: ['#80FFA5', '#00DDFF'],
+    backgroundColor: 'rgba(12, 12, 52, 0)',
     tooltip: {
         trigger: 'axis',
         axisPointer: {
@@ -27,55 +29,73 @@ let option = {
         }
     },
     legend: {
-        data: ['Line 1', 'Line 2']
+        data: props.option.legend.data,
+        textStyle: {
+            color: '#B5B5C5'
+        }
     },
     grid: {
-        left: '5%',
-        right: '5%',
         top: '10%',
-        bottom: '15%',
+        bottom: '10%',
         containLabel: false
     },
     xAxis: [
         {
             type: 'category',
             boundaryGap: false,
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: '#B5B5C5'
+                }
+            },
+            axisTick: {
+                show: false,
+                lineStyle: {
+                    color: '#B5B5C5'
+                }
+            },
+            axisLabel: {
+                //坐标轴 标签
+                show: false, //是否显示
+                color: '#B5B5C5'
+            },
+            data: []
         }
     ],
     yAxis: [
         {
             type: 'value',
+            min: 'dataMin',
+            // max: 'dataMax',
             axisLabel: {
                 //坐标轴 标签
                 show: true, //是否显示
+                color: '#B5B5C5'
             },
             splitLine: {
                 //grid 区域中的分隔线
-                show: true,
-                lineStyle: {
-                    color: '#ccc',
-                }
+                show: false,
             }
         },
         {
             type: 'value',
+            min: 'dataMin',
+            max: 'dataMax',
             axisLabel: {
                 //坐标轴 标签
                 show: true, //是否显示
+                color: '#B5B5C5'
             },
             splitLine: {
                 //grid 区域中的分隔线
-                show: true,
-                lineStyle: {
-                    color: '#ccc',
-                }
+                show: false,
             }
         }
     ],
     series: [
         {
-            name: 'Line 1',
+            name: '灯丝流',
             type: 'line',
             smooth: true,
             lineStyle: {
@@ -98,10 +118,10 @@ let option = {
             emphasis: {
                 focus: 'series'
             },
-            data: [10, 202, 18, 220, 27, 280, 210]
+            data: props.option.series[0].data
         },
         {
-            name: 'Line 2',
+            name: '灯丝压',
             type: 'line',
             smooth: true,
             yAxisIndex: 1,
@@ -125,14 +145,19 @@ let option = {
             emphasis: {
                 focus: 'series'
             },
-            data: [120, 82, 111, 204, 220, 260, 310]
+            data: props.option.series[1].data
         }
     ]
 };
 
 const chartInit = () => {
     let myChart = proxy.$echarts.init(document.getElementById(props.chartId));
-    props.option && myChart.setOption(props.option);
+    option && myChart.setOption(option);
+    emitter.on("chart:analog", (value) => {
+        myChart.setOption({
+            series: value
+        });
+    })
 }
 
 onMounted(async () => {

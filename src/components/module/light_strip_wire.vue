@@ -94,7 +94,6 @@ onMounted(() => {
             writing-mode: vertical-rl;
             text-orientation: upright;
             letter-spacing: 5px;
-            font-family: SourceHanSansSC-Normal, SourceHanSansSC;
             font-weight: 400;
             font-size: 14px;
             color: #FFFFFF;

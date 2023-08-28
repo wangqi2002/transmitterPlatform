@@ -92,7 +92,6 @@ onMounted(() => {
         height: 30px;
         line-height: 27px;
         font-size: 16px;
-        font-family: SourceHanSansSC-Bold, SourceHanSansSC;
         font-weight: bold;
         color: #ffffff;
         text-align: center;

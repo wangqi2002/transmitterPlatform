@@ -2,3 +2,7 @@
     font-family: "PangMenZhengDao";
     src: url("../assets/font/PangMenZhengDao.ttf");
 }
+@font-face {
+    font-family: "SourceHanSansSC-Normal";
+    src: url("../assets/font/SourceHanSansSC-Normal.otf");
+}

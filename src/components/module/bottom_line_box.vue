@@ -18,7 +18,6 @@ defineProps(['name'])
     text-align: left;
     position: relative;
     font-size: 16px;
-    font-family: SourceHanSansSC-Bold, SourceHanSansSC;
     font-weight: bold;
     color: #FFFFFF;
 

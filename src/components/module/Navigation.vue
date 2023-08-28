@@ -106,7 +106,6 @@ const handleSet = (e) => {
             margin-right: 50px;
             text-align: center;
             font-size: 18px;
-            font-family: SourceHanSansSC-Normal, SourceHanSansSC;
             font-weight: 400;
             color: #FFFFFF;
             display: inline-block;
