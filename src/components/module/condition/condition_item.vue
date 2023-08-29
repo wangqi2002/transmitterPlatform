@@ -17,9 +17,9 @@
 </template>
 
 <script setup>
-import BottomLineBox from "./bottom_line_box.vue";
-import LightStripWire from "./light_strip_wire.vue";
-import RingGradientPie from "../chart/pie/ring_gradient_pie.vue";
+import BottomLineBox from "../../common/bottom_line_box.vue";
+import LightStripWire from "../../common/light_strip_wire.vue";
+import RingGradientPie from "../../chart/pie/ring_gradient_pie.vue";
 import { ref } from "vue";
 const props = defineProps({
     name: String,
@@ -36,7 +36,10 @@ const option = { name: 'chart' }
     width: 100%;
     height: 100%;
 
-    ::v-deep .bottom_line_box {
+    // ::v-deep .bottom_line_box {
+    //     margin-left: 15px;
+    // }
+    :deep(.bottom_line_box) {
         margin-left: 15px;
     }
 

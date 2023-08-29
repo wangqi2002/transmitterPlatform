@@ -11,8 +11,8 @@
 </template>
 
 <script setup>
-import Navigation from "./module/navigation.vue"
-import RingIconButton from "./module/ring_icon_button.vue"
+import Navigation from "./navigation.vue"
+import RingIconButton from "../../common/ring_icon_button.vue"
 import { ref, onMounted, getCurrentInstance } from "vue";
 
 const { proxy } = getCurrentInstance();

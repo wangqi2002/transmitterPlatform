@@ -13,11 +13,11 @@
 </template>
 
 <script setup>
-import MonitorTitle from "./module/monitor_title.vue";
-import SingleGradientAreaLine from "./chart/line/single_gradient_area_line.vue";
+import MonitorTitle from "../../common/monitor_title.vue";
+import SingleGradientAreaLine from "../../chart/line/single_gradient_area_line.vue";
 import { ref, onMounted, getCurrentInstance } from "vue";
-import emitter from "../units/mittBus"
-import { getRandomInt, formatter } from "../units/tools"
+import emitter from "../../../units/mittBus"
+import { getRandomInt, formatter } from "../../../units/tools"
 
 const { proxy } = getCurrentInstance();
 

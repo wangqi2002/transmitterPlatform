@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import GradientLine from "./gradient_line.vue"
+import GradientLine from "../../common/gradient_line.vue"
 import { ref } from "vue";
 
 const flag = ref([true, false, false])
@@ -87,7 +87,13 @@ const handleSet = (e) => {
             }
         }
 
-        ::v-deep .gradient_line {
+        // ::v-deep .gradient_line {
+        //     height: 5px;
+        //     background: linear-gradient(90deg, rgba(152, 178, 255, 0), rgba(213, 246, 253, 1) 50%, rgba(152, 178, 255, 0));
+        //     bottom: -3px;
+        // }
+
+        :deep(.gradient_line) {
             height: 5px;
             background: linear-gradient(90deg, rgba(152, 178, 255, 0), rgba(213, 246, 253, 1) 50%, rgba(152, 178, 255, 0));
             bottom: -3px;

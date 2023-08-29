@@ -22,12 +22,12 @@
 </template>
 
 <script setup>
-import MainView from "../components/main_view.vue"
-import EnvMonitor from "../components/env_monitor.vue"
-import ConditionMonitor from "../components/condition_monitor.vue"
-import TransmitterMonitor from "../components/transmitter_monitor.vue"
-import SolidStateMonitor from "../components/solid_state_monitor.vue"
-import AnalogMonitor from "../components/analog_monitor.vue"
+import MainView from "../components/module/main/main_view.vue"
+import EnvMonitor from "../components/module/env/env_monitor.vue"
+import ConditionMonitor from "../components/module/condition/condition_monitor.vue"
+import TransmitterMonitor from "../components/module/transmitter/transmitter_monitor.vue"
+import SolidStateMonitor from "../components/module/solid_state/solid_state_monitor.vue"
+import AnalogMonitor from "../components/module/analog/analog_monitor.vue"
 import { ref } from 'vue'
 </script>
 
@@ -81,10 +81,6 @@ import { ref } from 'vue'
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
-
-    // ::v-deep .monitor_title {
-    //   background-color: antiquewhite;
-    // }
   }
 
   .solid_state_monitor {

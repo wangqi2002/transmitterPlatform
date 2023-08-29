@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import BottomLineBox from "../../module/bottom_line_box.vue";
+import BottomLineBox from "../../common/bottom_line_box.vue";
 import { ref, onMounted, getCurrentInstance, nextTick } from "vue";
 import emitter from "../../../units/mittBus"
 

@@ -16,11 +16,11 @@
 </template>
 
 <script setup>
-import MonitorTitle from "./module/monitor_title.vue";
-import DoubleGradientAreaLine from "./chart/line/double_gradient_area_line.vue";
+import MonitorTitle from "../../common/monitor_title.vue";
+import DoubleGradientAreaLine from "../../chart/line/double_gradient_area_line.vue";
 import { ref, onMounted, getCurrentInstance } from "vue";
-import emitter from "../units/mittBus"
-import { getRandomInt, formatter } from "../units/tools"
+import emitter from "../../../units/mittBus"
+import { getRandomInt, formatter } from "../../../units/tools"
 
 const analogList = ref([
     { name: '灯丝流', value: '400A' },
@@ -49,28 +49,28 @@ const option = {
     ]
 };
 onMounted(() => {
-    setInterval(function () {
-        if (count > 20) {
-            count = 1
-            data1 = [0, 10, 30, 56, 35, 50, 68, 85, 72, 90]
-            data2 = [5, 15, 25, 27, 40, 50, 55, 75, 80, 95]
-        }
-        let coefficient1 = formatter(2).format(count / getRandomInt(1, 3))
-        let coefficient2 = formatter(2).format(count / getRandomInt(1, 3))
-        data1.shift();
-        data1.push(getRandomInt(100 * coefficient1, 130 * coefficient1));
-        data2.shift();
-        data2.push(getRandomInt(80 * coefficient2, 120 * coefficient2));
-        emitter.emit("chart:analog", [
-            {
-                data: data1
-            },
-            {
-                data: data2
-            }
-        ])
-        count++
-    }, 2000);
+    // setInterval(function () {
+    //     if (count > 20) {
+    //         count = 1
+    //         data1 = [0, 10, 30, 56, 35, 50, 68, 85, 72, 90]
+    //         data2 = [5, 15, 25, 27, 40, 50, 55, 75, 80, 95]
+    //     }
+    //     let coefficient1 = formatter(2).format(count / getRandomInt(1, 3))
+    //     let coefficient2 = formatter(2).format(count / getRandomInt(1, 3))
+    //     data1.shift();
+    //     data1.push(getRandomInt(100 * coefficient1, 130 * coefficient1));
+    //     data2.shift();
+    //     data2.push(getRandomInt(80 * coefficient2, 120 * coefficient2));
+    //     emitter.emit("chart:analog", [
+    //         {
+    //             data: data1
+    //         },
+    //         {
+    //             data: data2
+    //         }
+    //     ])
+    //     count++
+    // }, 2000);
 })
 </script>
 

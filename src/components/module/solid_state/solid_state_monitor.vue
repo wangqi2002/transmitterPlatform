@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import MonitorTitle from "./module/monitor_title.vue";
+import MonitorTitle from "../../common/monitor_title.vue";
 import { ref, onMounted } from "vue";
 </script>
 

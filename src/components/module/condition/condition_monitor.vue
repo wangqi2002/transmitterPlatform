@@ -13,8 +13,8 @@
 </template>
 
 <script setup>
-import ConditionItem from "./module/condition_item.vue";
-import MonitorTitle from "./module/monitor_title.vue";
+import ConditionItem from "./condition_item.vue";
+import MonitorTitle from "../../common/monitor_title.vue";
 import { ref, onMounted } from "vue";
 </script>
 
