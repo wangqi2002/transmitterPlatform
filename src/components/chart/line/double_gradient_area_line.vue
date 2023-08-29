@@ -37,6 +37,8 @@ let option = {
     grid: {
         top: '10%',
         bottom: '10%',
+        left: '11%',
+        right: '11%',
         containLabel: false
     },
     xAxis: [
@@ -66,8 +68,8 @@ let option = {
     yAxis: [
         {
             type: 'value',
-            min: 'dataMin',
-            // max: 'dataMax',
+            // min: 'dataMin',
+            max: 'dataMax',
             axisLabel: {
                 //坐标轴 标签
                 show: true, //是否显示
@@ -80,7 +82,7 @@ let option = {
         },
         {
             type: 'value',
-            min: 'dataMin',
+            // min: 'dataMin',
             max: 'dataMax',
             axisLabel: {
                 //坐标轴 标签

@@ -25,12 +25,6 @@ const option1 = {
     series: [
         {
             name: '温度',
-            type: 'line',
-            smooth: true,
-            lineStyle: {
-                width: 2,
-                color: 'rgb(9, 247, 173, 1)'
-            },
             // showSymbol: false,
             areaStyle: {
                 opacity: 0.7,
@@ -53,13 +47,6 @@ const option2 = {
     series: [
         {
             name: '湿度',
-            type: 'line',
-            smooth: true,
-            lineStyle: {
-                width: 2,
-                color: 'rgb(51, 223, 253, 1)'
-            },
-            // showSymbol: false,
             areaStyle: {
                 opacity: 0.7,
                 color: new proxy.$echarts.graphic.LinearGradient(0, 0, 0, 1, [

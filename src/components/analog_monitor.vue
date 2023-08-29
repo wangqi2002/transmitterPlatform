@@ -55,8 +55,8 @@ onMounted(() => {
             data1 = [0, 10, 30, 56, 35, 50, 68, 85, 72, 90]
             data2 = [5, 15, 25, 27, 40, 50, 55, 75, 80, 95]
         }
-        let coefficient1 = formatter(2).format(count / getRandomInt(1, 5))
-        let coefficient2 = formatter(2).format(count / getRandomInt(1, 5))
+        let coefficient1 = formatter(2).format(count / getRandomInt(1, 3))
+        let coefficient2 = formatter(2).format(count / getRandomInt(1, 3))
         data1.shift();
         data1.push(getRandomInt(100 * coefficient1, 130 * coefficient1));
         data2.shift();

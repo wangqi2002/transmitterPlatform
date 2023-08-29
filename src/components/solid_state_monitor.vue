@@ -1,7 +1,7 @@
 <template>
     <div class="child_container">
         <div class="header">
-            <MonitorTitle title="固态监测"></MonitorTitle>
+            <MonitorTitle title="固态源监测"></MonitorTitle>
         </div>
         <div class="top_aside"></div>
         <div class="bottom_aside"></div>

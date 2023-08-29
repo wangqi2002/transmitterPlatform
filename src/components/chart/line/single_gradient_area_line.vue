@@ -63,7 +63,7 @@ let option = {
     ],
     series: [
         {
-            name: 'name',
+            name: props.option.series[0].name,
             type: 'line',
             smooth: true,
             lineStyle: {
@@ -71,26 +71,13 @@ let option = {
                 color: 'rgb(9,247,173, 1)'
             },
             // showSymbol: false,
-            areaStyle: {
-                opacity: 0.7,
-                color: new proxy.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                    {
-                        offset: 0,
-                        color: 'rgb(9,247,173, 1)'
-                    },
-                    {
-                        offset: 1,
-                        color: 'rgb(9,247,173, 0)'
-                    }
-                ])
-            },
-            data: [140, 232, 101, 264, 90, 340, 250]
+            areaStyle: props.option.series[0].areaStyle,
+            data: props.option.series[0].data
         }
     ]
 };
 
 const chartInit = () => {
-    option.series = props.option.series
     let myChart = proxy.$echarts.init(document.getElementById(props.chartId));
     option && myChart.setOption(option);
 }
