@@ -1,12 +1,13 @@
 <template>
     <div class="navigation">
         <div class="nav_title">
-            <div class="nav_title_icon"></div>
+            <!-- <div class="nav_title_icon"></div>
             <div class="nav_title_txt">
                 <span class="left"></span>
                 发射机智能监测系统
             </div>
-            <GradientLine></GradientLine>
+            <GradientLine></GradientLine> -->
+            <img class="nav_title_icon" src="../../../assets//icon/app-icon.svg" />
         </div>
         <div class="nav_tab">
             <div class="nav_tab_item is-active" @click="handleMonitor">监测中心
@@ -66,7 +67,11 @@ const handleSet = (e) => {
         height: 100%;
         position: absolute;
         left: 0;
-        top: 0;
+        top: -5px;
+
+        .nav_title_icon {
+            margin-bottom: 0px;
+        }
 
         .nav_title_txt {
             height: 45px;

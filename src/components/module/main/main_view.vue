@@ -2,17 +2,19 @@
     <div class="child_container">
         <Navigation></Navigation>
         <div class="model_btn">
-            <RingIconButton title="全景" bid="all" :flag="flagOne" @click="handleOne"></RingIconButton>
-            <RingIconButton title="发射机" bid="one" :flag="flagTwo" @click="handleTwo"></RingIconButton>
-            <RingIconButton title="机柜" bid="two" :flag="flagThree" @click="handleThree"></RingIconButton>
-            <RingIconButton title="电源" bid="three" :flag="flagFour" @click="handleFour"></RingIconButton>
+            <img class="ring_btn" :src="flagOne ? './icon/taps-all-s.svg' : './icon/taps-all.svg'" @click="handleOne" />
+            <img class="ring_btn" :src="flagTwo ? './icon/taps-transmitter-s.svg' : './icon/taps-transmitter.svg'"
+                @click="handleTwo" />
+            <img class="ring_btn" :src="flagThree ? './icon/taps-cabinet-s.svg' : './icon/taps-cabinet.svg'"
+                @click="handleThree" />
+            <img class="ring_btn" :src="flagFour ? './icon/taps-power-s.svg' : './icon/taps-power.svg'"
+                @click="handleFour" />
         </div>
     </div>
 </template>
 
 <script setup>
 import Navigation from "./navigation.vue"
-import RingIconButton from "../../common/ring_icon_button.vue"
 import { ref, onMounted, getCurrentInstance } from "vue";
 
 const { proxy } = getCurrentInstance();
@@ -60,7 +62,10 @@ const handleFour = () => {
         padding-top: 35px;
         height: calc(100% - 80px);
 
-        // background-color: aliceblue;
+        .ring_btn {
+            pointer-events: auto;
+            margin-bottom: 20px;
+        }
     }
 }
 </style>
