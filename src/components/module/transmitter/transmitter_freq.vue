@@ -20,7 +20,7 @@ import { ref, onMounted, getCurrentInstance, nextTick } from "vue";
 const { proxy } = getCurrentInstance();
 const props = defineProps({
     name: String,
-    chartId: String,
+    chartId: Array,
     options: Array,
     group: Array
 })

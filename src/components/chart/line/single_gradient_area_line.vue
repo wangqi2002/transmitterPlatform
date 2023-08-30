@@ -14,7 +14,7 @@ const { proxy } = getCurrentInstance();
 const props = defineProps({
     name: String,
     chartId: String,
-    option: Object
+    options: Object
 })
 // todo: 确定怎么配置option 1.全用外部  2.样式用外部   （所有表格都存在这个问题）
 let option = {
@@ -63,7 +63,7 @@ let option = {
     ],
     series: [
         {
-            name: props.option.series[0].name,
+            name: props.options.series[0].name,
             type: 'line',
             smooth: true,
             lineStyle: {
@@ -71,8 +71,8 @@ let option = {
                 color: 'rgb(9,247,173, 1)'
             },
             // showSymbol: false,
-            areaStyle: props.option.series[0].areaStyle,
-            data: props.option.series[0].data
+            areaStyle: props.options.series[0].areaStyle,
+            data: props.options.series[0].data
         }
     ]
 };

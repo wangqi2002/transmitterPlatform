@@ -3,24 +3,33 @@
         <div class="item_name">
             {{ props.name }}
         </div>
-        <div class="item_chart_1"></div>
-        <div class="item_chart_2"></div>
+        <div class="item_chart_1">
+            <SignalBar :chartId="props.chartId[0]" :options="props.options[0]"></SignalBar>
+        </div>
+        <div class="item_chart_2">
+            <SignalBar :chartId="props.chartId[1]" :options="props.options[1]"></SignalBar>
+        </div>
     </div>
 </template>
 
 <script setup>
+import SignalBar from "../../chart/user-defined/signal_bar.vue"
 import { ref, onMounted, nextTick } from "vue";
 
 const props = defineProps({
     name: String,
-    chartId: String,
-    options: Object
+    chartId: Array,
+    options: Array,
 })
 
-onMounted(() => { })
+onMounted(() => {
+    // console.log(props.options)
+})
 </script>
 
 <style scoped lang="scss">
+$markColor: rgba(16, 49, 92, 1);
+
 .transmitter_power_item {
     width: 100%;
     height: 100%;
@@ -38,13 +47,15 @@ onMounted(() => { })
     .item_chart_1 {
         grid-column-start: 2;
         grid-column-end: 3;
-        background-color: rgb(32, 92, 145);
+        border-radius: 7px;
+        background-color: $markColor;
     }
 
     .item_chart_2 {
         grid-column-start: 3;
         grid-column-end: 4;
-        background-color: rgb(32, 92, 145);
+        border-radius: 7px;
+        background-color: $markColor;
     }
 }
 </style>

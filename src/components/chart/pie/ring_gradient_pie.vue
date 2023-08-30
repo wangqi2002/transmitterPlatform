@@ -12,7 +12,7 @@ const { proxy } = getCurrentInstance();
 const props = defineProps({
     name: String,
     chartId: String,
-    option: Object
+    options: Object
 })
 
 let option = {

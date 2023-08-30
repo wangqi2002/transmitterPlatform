@@ -3,10 +3,12 @@
         <BottomLineBox :name="props.name"></BottomLineBox>
         <div class="chart_area">
             <div class="top_aside">
-                <TransmitterPowerItem :name="props.group[0]"></TransmitterPowerItem>
+                <TransmitterPowerItem :name="props.group[0]" :chartId="props.chartId[0]" :options="props.options[0]">
+                </TransmitterPowerItem>
             </div>
             <div class="bottom_aside">
-                <TransmitterPowerItem :name="props.group[1]"></TransmitterPowerItem>
+                <TransmitterPowerItem :name="props.group[1]" :chartId="props.chartId[1]" :options="props.options[1]">
+                </TransmitterPowerItem>
             </div>
         </div>
     </div>
@@ -20,9 +22,12 @@ import { ref, onMounted, getCurrentInstance, nextTick } from "vue";
 const { proxy } = getCurrentInstance();
 const props = defineProps({
     name: String,
-    chartId: String,
+    chartId: Array,
     options: Array,
     group: Array
+})
+onMounted(() => {
+    // console.log(props.options)
 })
 </script>
 

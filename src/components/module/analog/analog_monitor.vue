@@ -4,7 +4,7 @@
             <MonitorTitle title="模拟量监测"></MonitorTitle>
         </div>
         <div class="top_aside">
-            <DoubleGradientAreaLine chartId="analogLine" :option="option"></DoubleGradientAreaLine>
+            <DoubleGradientAreaLine chartId="analogLine" :options="option"></DoubleGradientAreaLine>
         </div>
         <div class="bottom_aside">
             <span class="analog_item" v-for="(item, index) in analogList" :key="index">

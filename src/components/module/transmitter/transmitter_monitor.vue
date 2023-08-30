@@ -7,7 +7,7 @@
             <TransmitterFreq name="当前功率" :group="groups" :chartId="chartIds_1" :options="options1"></TransmitterFreq>
         </div>
         <div class="bottom_aside">
-            <TransmitterPower name="当前频率" :group="groups" :chartId="chartIds_2" :options="options1"></TransmitterPower>
+            <TransmitterPower name="当前频率" :group="groups" :chartId="chartIds_2" :options="options2"></TransmitterPower>
         </div>
     </div>
 </template>
@@ -22,7 +22,7 @@ const { proxy } = getCurrentInstance();
 
 const groups = ref(['1#机', '2#机'])
 const chartIds_1 = ref(['freq_bar-1', 'freq_bar-2'])
-const chartIds_2 = ref(['freq_bar-3', 'freq_bar-4'])
+const chartIds_2 = ref([['Inpower_bar-1', 'Inpower_bar-2'], ['Outpower_bar-1', 'Outpower_bar-2']])
 const options1 = ref([
     {
         color: [
@@ -52,6 +52,36 @@ const options1 = ref([
             }
         ]
     }
+])
+const options2 = ref([
+    [
+        {
+            title: '末级入射功率',
+            color: 'linear-gradient(90deg, rgba(90, 255, 203, 1), rgba(13, 255, 179, 1))',
+            value: '80kW',
+            schedule: 4
+        },
+        {
+            title: '末级反射功率',
+            color: 'linear-gradient(90deg, rgba(106, 222, 255, 1), rgba(63, 214, 255, 1))',
+            value: '10kW',
+            schedule: 5
+        }
+    ],
+    [
+        {
+            title: '末级入射功率',
+            color: 'linear-gradient(90deg, rgba(90, 255, 203, 1), rgba(13, 255, 179, 1))',
+            value: '100kW',
+            schedule: 5
+        },
+        {
+            title: '末级反射功率',
+            color: 'linear-gradient(90deg, rgba(106, 222, 255, 1), rgba(63, 214, 255, 1))',
+            value: '19kW',
+            schedule: 5
+        }
+    ]
 ])
 
 </script>

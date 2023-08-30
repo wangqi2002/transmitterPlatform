@@ -4,10 +4,10 @@
             <MonitorTitle title="环境检测"></MonitorTitle>
         </div>
         <div class="left_aside">
-            <SingleGradientAreaLine name="温度" chartId="temperature" :option="option1"></SingleGradientAreaLine>
+            <SingleGradientAreaLine name="温度" chartId="temperature" :options="option1"></SingleGradientAreaLine>
         </div>
         <div class="right_aside">
-            <SingleGradientAreaLine name="湿度" chartId="humidness" :option="option2"></SingleGradientAreaLine>
+            <SingleGradientAreaLine name="湿度" chartId="humidness" :options="option2"></SingleGradientAreaLine>
         </div>
     </div>
 </template>

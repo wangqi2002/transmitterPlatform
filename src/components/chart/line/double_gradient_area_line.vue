@@ -13,7 +13,7 @@ const { proxy } = getCurrentInstance();
 const props = defineProps({
     name: String,
     chartId: String,
-    option: Object
+    options: Object
 })
 
 let option = {
@@ -29,7 +29,7 @@ let option = {
         }
     },
     legend: {
-        data: props.option.legend.data,
+        data: props.options.legend.data,
         textStyle: {
             color: '#B5B5C5'
         }
@@ -120,7 +120,7 @@ let option = {
             emphasis: {
                 focus: 'series'
             },
-            data: props.option.series[0].data
+            data: props.options.series[0].data
         },
         {
             name: '灯丝压',
@@ -147,7 +147,7 @@ let option = {
             emphasis: {
                 focus: 'series'
             },
-            data: props.option.series[1].data
+            data: props.options.series[1].data
         }
     ]
 };

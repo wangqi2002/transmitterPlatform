@@ -4,7 +4,7 @@
         <div class="condition_item_box">
             <div class="left_aside">
                 <div class="percent">70%</div>
-                <RingGradientPie :chartId="props.chartId" :option="option"></RingGradientPie>
+                <RingGradientPie :chartId="props.chartId" :options="option"></RingGradientPie>
                 <span class="legend_value one">109</span>
                 <span class="legend_value two">47</span>
                 <span class="legend_value three">2</span>
@@ -25,7 +25,7 @@ const props = defineProps({
     name: String,
     chartId: String,
     num: String,
-    option: Object
+    options: Object
 })
 
 const option = { name: 'chart' }
