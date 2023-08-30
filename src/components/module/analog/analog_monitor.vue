@@ -9,7 +9,6 @@
         <div class="bottom_aside">
             <span class="analog_item" v-for="(item, index) in analogList" :key="index">
                 <span class="analog_item_name">{{ item.name }}</span>
-                <span class="analog_item_value">{{ item.value }}</span>
             </span>
         </div>
     </div>
@@ -23,14 +22,14 @@ import emitter from "../../../units/mittBus"
 import { getRandomInt, formatter } from "../../../units/tools"
 
 const analogList = ref([
-    { name: '灯丝流', value: '400A' },
-    { name: '栅流', value: '0.8A' },
-    { name: '阳流', value: '28A' },
-    { name: '帘栅流', value: '1.5A' },
-    { name: '灯丝压', value: '19V' },
-    { name: '栅压', value: '480V' },
-    { name: '阳压', value: '13kV' },
-    { name: '帘栅压', value: '1.2kW' },
+    { name: '灯丝流' },
+    { name: '栅流' },
+    { name: '阳流' },
+    { name: '帘栅流' },
+    { name: '灯丝压' },
+    { name: '栅压' },
+    { name: '阳压' },
+    { name: '帘栅压' },
 ])
 let data1 = [0, 10, 30, 56, 35, 50, 68, 85, 72, 90]
 let data2 = [5, 15, 25, 27, 40, 50, 55, 75, 80, 95]

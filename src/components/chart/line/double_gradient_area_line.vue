@@ -104,19 +104,6 @@ let option = {
                 width: 2
             },
             showSymbol: false,
-            areaStyle: {
-                opacity: 0.8,
-                color: new proxy.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                    {
-                        offset: 0,
-                        color: 'rgb(128, 255, 165)'
-                    },
-                    {
-                        offset: 1,
-                        color: 'rgb(1, 191, 236)'
-                    }
-                ])
-            },
             emphasis: {
                 focus: 'series'
             },
@@ -131,19 +118,6 @@ let option = {
                 width: 2
             },
             showSymbol: false,
-            areaStyle: {
-                opacity: 0.8,
-                color: new proxy.$echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                    {
-                        offset: 0,
-                        color: 'rgb(0, 221, 255)'
-                    },
-                    {
-                        offset: 1,
-                        color: 'rgb(77, 119, 255)'
-                    }
-                ])
-            },
             emphasis: {
                 focus: 'series'
             },
