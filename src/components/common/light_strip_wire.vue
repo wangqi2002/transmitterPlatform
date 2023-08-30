@@ -2,9 +2,11 @@
     <div class="light_strip_wire">
         <span v-for="(item, index) in lightList">
             <div class="light_item">
-                <div class="light" :class="props.chartId">
+                <!-- <div class="light" :class="props.chartId">
                     <div class="light_in"></div>
-                </div>
+                </div> -->
+                <img class="light_img" :src="flag[index] ? './icon/light-on.png' : './icon/light-off.png'"
+                    @click="handleOne" />
                 <div class="light_name">{{ item }}</div>
             </div>
             <div class="light_strip" :class="props.chartId" v-if="index != 4"></div>
@@ -21,15 +23,11 @@ const props = defineProps({
 })
 
 const lightList = ref(['灯丝', '栅压', '阳压', '帘栅', '出波'])
+const flag = ref([false, false, false, false, false])
 
 onMounted(() => {
-    let lights = document.querySelectorAll(`.light.${props.chartId}`)
-    let strips = document.querySelectorAll(`.light_strip.${props.chartId}`)
     for (let i = 0; i < props.num; i++) {
-        lights[i].className = 'light suc'
-    }
-    for (let i = 0; i < props.num - 1; i++) {
-        strips[i].className = 'light_strip suc'
+        flag.value[i] = true
     }
 })
 </script>
@@ -86,6 +84,14 @@ onMounted(() => {
                     inset 0 0 2px rgba(52, 223, 255, 1),
                     inset 0 0 3px rgba(52, 223, 255, 1);
             }
+        }
+
+        .light_img {
+            width: 32px;
+            height: 32px;
+            position: relative;
+            top: 6px;
+            left: -5px;
         }
 
         .light_name {
