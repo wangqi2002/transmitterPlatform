@@ -78,11 +78,10 @@ const handleFour = () => {
 
     .set_select_card {
         width: 200px;
-        height: 240px;
+        height: 260px;
         position: absolute;
         top: 0px;
         left: 540px;
-        pointer-events: auto;
     }
 
     .cs {
