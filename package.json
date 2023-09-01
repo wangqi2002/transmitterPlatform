@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@splinetool/runtime": "^0.9.424",
+    "ant-design-vue": "^4.0.2",
     "echarts": "^5.4.3",
     "mitt": "^3.0.1",
     "vue": "^3.3.4",

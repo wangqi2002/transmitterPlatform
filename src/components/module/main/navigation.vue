@@ -28,6 +28,18 @@ import GradientLine from "../../common/gradient_line.vue"
 import { ref } from "vue";
 
 const flag = ref([true, false, false])
+const setValue = ref(['1', '2'])
+const setList = ref([
+    { lable: '1#机', value: '1' },
+    { lable: '2#机', value: '2' },
+    { lable: '3#机', value: '3' },
+    { lable: '4#机', value: '4' },
+    { lable: '5#机', value: '5' },
+    { lable: '6#机', value: '6' },
+    { lable: '7#机', value: '7' },
+    { lable: '8#机', value: '8' },
+    { lable: '9#机', value: '9' },
+])
 
 const handleMonitor = (e) => {
     let els = document.querySelectorAll(".nav_tab_item")

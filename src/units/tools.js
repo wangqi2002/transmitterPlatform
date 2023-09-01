@@ -18,6 +18,16 @@ const formatter = (digit) => {
 }
 // eg: formatter(4).format()
 
+// todo 后期要删除
+// 获得随机数据
+// let obj = []
+// for (var i = 0; i < 11; i++) {
+//     const date = new Date('March 13, 08 04:20');
+//     let time = date.getHours() + ':' + date.getMinutes();
+//     obj.push({ name: '灯丝流', time: time, value: getRandomInt(100, 800) })
+// }
+// console.log(obj)
+
 export {
     getRandomArbitrary,
     getRandomInt,

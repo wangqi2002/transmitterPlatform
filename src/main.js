@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
+import Antd from 'ant-design-vue';
+import 'ant-design-vue/dist/reset.css';
 import './style.css'
 import './styles/font.css'
 import App from './App.vue'
@@ -8,4 +10,4 @@ const app = createApp(App)
 
 app.config.globalProperties.$echarts = echarts
 
-app.mount('#app')
+app.use(Antd).mount('#app')

@@ -91,7 +91,7 @@ $markColor: rgba(16, 49, 92, 1);
         }
 
         .bar_mark:last-child {
-            width: 15px;
+            width: 13px;
             margin-right: 0px;
         }
     }

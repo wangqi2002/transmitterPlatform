@@ -13,123 +13,107 @@ const { proxy } = getCurrentInstance();
 const props = defineProps({
     name: String,
     chartId: String,
-    options: Object
+    options: Object,
+    setList: Array,
+    colorList: Array
 })
 
 let option = {
-    color: ['#80FFA5', '#00DDFF'],
     backgroundColor: 'rgba(12, 12, 52, 0)',
     tooltip: {
-        trigger: 'axis',
+        trigger: 'item',
         axisPointer: {
             type: 'cross',
             label: {
                 backgroundColor: '#6a7985'
             }
-        }
-    },
-    legend: {
-        data: props.options.legend.data,
-        textStyle: {
-            color: '#B5B5C5'
+        },
+        formatter: function (params) {
+            let res = "";
+            res = params.seriesName + "<br/>" + "Time:  " + params.data.time + "<br/>" + params.marker + params.data.name + ":  " + params.data.value;
+            return res;
         }
     },
     grid: {
-        top: '10%',
+        top: '3%',
         bottom: '10%',
-        left: '11%',
-        right: '11%',
+        left: '5%',
+        right: '5%',
         containLabel: false
     },
-    xAxis: [
-        {
-            type: 'category',
-            boundaryGap: false,
-            axisLine: {
-                show: true,
-                lineStyle: {
-                    color: '#B5B5C5'
-                }
-            },
-            axisTick: {
-                show: false,
-                lineStyle: {
-                    color: '#B5B5C5'
-                }
-            },
-            axisLabel: {
-                //坐标轴 标签
-                show: false, //是否显示
-                color: '#B5B5C5'
-            },
-            data: []
-        }
-    ],
-    yAxis: [
-        {
-            type: 'value',
-            // min: 'dataMin',
-            max: 'dataMax',
-            axisLabel: {
-                //坐标轴 标签
-                show: true, //是否显示
-                color: '#B5B5C5'
-            },
-            splitLine: {
-                //grid 区域中的分隔线
-                show: false,
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        splitLine: {
+            show: true,
+            lineStyle: {
+                color: '#0F133F'
             }
         },
-        {
-            type: 'value',
-            // min: 'dataMin',
-            max: 'dataMax',
-            axisLabel: {
-                //坐标轴 标签
-                show: true, //是否显示
-                color: '#B5B5C5'
-            },
-            splitLine: {
-                //grid 区域中的分隔线
-                show: false,
+        axisTick: {
+            show: false
+        },
+        data: ['0', '100', '200', '300', '400', '500', '600', '700', '800', '900', '1000']
+    },
+    yAxis: {
+        type: 'value',
+        // min: 'dataMin',
+        // max: 'dataMax',
+        axisLabel: {
+            show: false
+        },
+        splitLine: {
+            show: true,
+            lineStyle: {
+                color: '#0F133F'
             }
         }
-    ],
-    series: [
-        {
-            name: '灯丝流',
-            type: 'line',
-            smooth: true,
-            lineStyle: {
-                width: 2
-            },
-            showSymbol: false,
-            emphasis: {
-                focus: 'series'
-            },
-            data: props.options.series[0].data
-        },
-        {
-            name: '灯丝压',
-            type: 'line',
-            smooth: true,
-            yAxisIndex: 1,
-            lineStyle: {
-                width: 2
-            },
-            showSymbol: false,
-            emphasis: {
-                focus: 'series'
-            },
-            data: props.options.series[1].data
-        }
-    ]
+    },
+    series: []
 };
 
 const chartInit = () => {
     let myChart = proxy.$echarts.init(document.getElementById(props.chartId));
+    let series = []
+    for (let i = 0; i < 20; i++) {
+        if (i % 2 == 0) {
+            series.push({
+                name: props.setList[0],
+                type: 'line',
+                smooth: true,
+                lineStyle: {
+                    type: "solid",
+                    width: 1,
+                    color: props.colorList[Math.floor(i / 2)]
+                },
+                showSymbol: false,
+                emphasis: {
+                    focus: 'series'
+                },
+                data: props.options.series[i].data
+            })
+        } else {
+            series.push({
+                name: props.setList[1],
+                type: 'line',
+                smooth: true,
+                lineStyle: {
+                    type: "dashed",
+                    width: 1,
+                    color: props.colorList[Math.floor(i / 2)]
+                },
+                showSymbol: false,
+                emphasis: {
+                    focus: 'series'
+                },
+                data: props.options.series[i].data
+            })
+        }
+    }
+    option.series = series
     option && myChart.setOption(option);
     emitter.on("chart:analog", (value) => {
+        console.log(value);
         myChart.setOption({
             series: value
         });

@@ -1,6 +1,9 @@
 <template>
     <div class="child_container">
         <Navigation></Navigation>
+        <div class="set_select_card">
+            <MultipleSelect></MultipleSelect>
+        </div>
         <div class="model_btn">
             <img class="ring_btn" :src="flagOne ? './icon/taps-all-s.svg' : './icon/taps-all.svg'" @click="handleOne" />
             <img class="ring_btn" :src="flagTwo ? './icon/taps-transmitter-s.svg' : './icon/taps-transmitter.svg'"
@@ -10,11 +13,15 @@
             <img class="ring_btn" :src="flagFour ? './icon/taps-power-s.svg' : './icon/taps-power.svg'"
                 @click="handleFour" />
         </div>
+        <!-- todo: 用于测试组件，后期需删除 -->
+        <!-- <div class="cs">
+        </div> -->
     </div>
 </template>
 
 <script setup>
 import Navigation from "./navigation.vue"
+import MultipleSelect from "../../common/multiple_select.vue"
 import { ref, onMounted, getCurrentInstance } from "vue";
 
 const { proxy } = getCurrentInstance();
@@ -55,6 +62,7 @@ const handleFour = () => {
 .child_container {
     width: 100%;
     height: 100%;
+    position: relative;
 
     // background-color: aliceblue;
     .model_btn {
@@ -66,6 +74,24 @@ const handleFour = () => {
             pointer-events: auto;
             margin-bottom: 20px;
         }
+    }
+
+    .set_select_card {
+        width: 200px;
+        height: 240px;
+        position: absolute;
+        top: 0px;
+        left: 540px;
+        pointer-events: auto;
+    }
+
+    .cs {
+        width: calc(100% - 110px);
+        height: calc(100% - 80px);
+        background: rgba(12, 12, 52, 0.4);
+        position: absolute;
+        top: 50px;
+        right: 0px;
     }
 }
 </style>
