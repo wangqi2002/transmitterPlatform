@@ -48,9 +48,11 @@
         </div>
         <div class="legend_group">
             <span class="legend_item">
+                <img class="legend_icon" src="../../../assets/icon/legend_solid.svg" />
                 {{ setList[0] }}
             </span>
             <span class="legend_item">
+                <img class="legend_icon" src="../../../assets/icon/legend_dotted.svg" />
                 {{ setList[1] }}
             </span>
         </div>

@@ -97,6 +97,7 @@ onMounted(() => {
         .light_name {
             width: 20px;
             margin-left: 1px;
+            margin-top: 10px;
             writing-mode: vertical-rl;
             text-orientation: upright;
             letter-spacing: 5px;
