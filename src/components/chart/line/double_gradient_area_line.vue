@@ -11,11 +11,7 @@ import emitter from "../../../units/mittBus"
 
 const { proxy } = getCurrentInstance();
 const props = defineProps({
-    name: String,
-    chartId: String,
-    options: Object,
-    setList: Array,
-    colorList: Array
+    chartId: String
 })
 
 let option = {
@@ -74,43 +70,6 @@ let option = {
 
 const chartInit = () => {
     let myChart = proxy.$echarts.init(document.getElementById(props.chartId));
-    let series = []
-    for (let i = 0; i < 20; i++) {
-        if (i % 2 == 0) {
-            series.push({
-                name: props.setList[0],
-                type: 'line',
-                smooth: true,
-                lineStyle: {
-                    type: "solid",
-                    width: 1,
-                    color: props.colorList[Math.floor(i / 2)]
-                },
-                showSymbol: false,
-                emphasis: {
-                    focus: 'series'
-                },
-                data: props.options.series[i].data
-            })
-        } else {
-            series.push({
-                name: props.setList[1],
-                type: 'line',
-                smooth: true,
-                lineStyle: {
-                    type: "dashed",
-                    width: 1,
-                    color: props.colorList[Math.floor(i / 2)]
-                },
-                showSymbol: false,
-                emphasis: {
-                    focus: 'series'
-                },
-                data: props.options.series[i].data
-            })
-        }
-    }
-    option.series = series
     option && myChart.setOption(option);
     emitter.on("chart:analog", (value) => {
         console.log(value);

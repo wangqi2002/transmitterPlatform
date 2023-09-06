@@ -4,7 +4,7 @@
             <MonitorTitle title="模拟量监测"></MonitorTitle>
         </div>
         <div class="top_aside">
-            <DoubleGradientAreaLine chartId="analogLine" :setList="setList" :colorList="colorList" :options="option">
+            <DoubleGradientAreaLine chartId="analogLine">
             </DoubleGradientAreaLine>
         </div>
         <div class="bottom_aside">
@@ -92,10 +92,13 @@ let colorList = [
     'rgba(106, 156, 255, 1)',
     'rgba(255, 129, 204, 1)'
 ]
-const option = ref({
-    series: [
-        {
-            // data: [415, 672, 498, 699, 158, 488, 571, 720, 123, 379, 489]
+const handleAnalogLine = () => {
+    console.log(analogValues.value)
+}
+onMounted(() => {
+    setTimeout(function () {
+        let series = []
+        let data = [{
             data: [
                 { name: '灯丝流', time: '4:20', value: 483 },
                 { name: '灯丝流', time: '4:20', value: 643 },
@@ -214,61 +217,44 @@ const option = ref({
                 { name: '帘栅流', time: '6:1', value: 181 },
                 { name: '帘栅流', time: '6:1', value: 706 }
             ]
-        },
-        {
-            data: []
-        },
-        {
-            data: []
-        },
-        {
-            data: []
-        },
-        {
-            data: []
-        },
-        {
-            data: []
-        },
-        {
-            data: []
-        },
-        {
-            data: []
-        },
-        {
-            data: []
-        },
-        {
-            data: []
-        },
-        {
-            data: []
-        },
-        {
-            data: []
-        },
-        {
-            data: []
-        },
-    ]
-});
-const handleAnalogLine = () => {
-    console.log(analogValues.value)
-}
-onMounted(() => {
-    // setInterval(function () {
-    // setTimeout(function () {
-    //     let data = []
-    //     for (let i = 0; i < 20; i++) {
-    //         let arr = []
-    //         for (let j = 0; j < 11; j++) {
-    //             arr.push(getRandomInt(100, 800))
-    //         }
-    //         data.push(arr)
-    //     }
-    //     emitter.emit("chart:analog", data)
-    // }, 4000);
+        }]
+        for (let i = 0; i < analogValues.value.length * 2; i++) {
+            if (i % 2 == 0) {
+                series.push({
+                    name: setList.value[0],
+                    type: 'line',
+                    smooth: true,
+                    lineStyle: {
+                        type: "solid",
+                        width: 1,
+                        color: colorList[Math.floor(i / 2)]
+                    },
+                    showSymbol: false,
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: data[i].data
+                })
+            } else {
+                series.push({
+                    name: setList.value[0],
+                    type: 'line',
+                    smooth: true,
+                    lineStyle: {
+                        type: "dashed",
+                        width: 1,
+                        color: colorList[Math.floor(i / 2)]
+                    },
+                    showSymbol: false,
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: data[i].data
+                })
+            }
+        }
+        emitter.emit('chart:analog', series)
+    }, 2000);
 })
 </script>
 
