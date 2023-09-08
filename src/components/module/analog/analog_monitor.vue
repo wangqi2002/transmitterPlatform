@@ -82,19 +82,7 @@ const analogList = ref([
   { label: "帘栅压", value: "帘栅压" },
   { label: "反射功率", value: "反射功率" },
 ]);
-const setList = ref(["1#组", "2#组"]);
-let colorList = [
-  "rgba(255, 57, 57, 1)",
-  "rgba(255, 200, 106, 1)",
-  "rgba(106, 255, 141, 1)",
-  "rgba(129, 229, 255, 1)",
-  "rgba(190, 115, 255, 1)",
-  "rgba(255, 132, 33, 1)",
-  "rgba(222, 255, 106, 1)",
-  "rgba(38, 154, 153, 1)",
-  "rgba(106, 156, 255, 1)",
-  "rgba(255, 129, 204, 1)",
-];
+const setList = ref(["1#机", "2#机"]);
 let colorObj = {
   灯丝流: "rgba(255, 57, 57, 1)",
   栅流: "rgba(255, 200, 106, 1)",
@@ -114,7 +102,7 @@ const handleAnalogLine = () => {
     series.push(list[0]);
     series.push(list[1]);
   }
-//   console.log(series);
+  //   console.log(series);
   emitter.emit("chart:analog", series);
 };
 const setData = (analogName) => {
@@ -161,6 +149,9 @@ const csData = (analogName) => {
   return obj;
 };
 onMounted(() => {
+  emitter.on("set:change", (e) => {
+    setList.value = e;
+  });
   setTimeout(function () {
     let series = [];
     let data = [
@@ -294,7 +285,7 @@ onMounted(() => {
           lineStyle: {
             type: "solid",
             width: 1,
-            color: colorList[Math.floor(i / 2)],
+            color: colorObj[analogValues.value[i / 2]],
           },
           showSymbol: false,
           emphasis: {
@@ -310,7 +301,7 @@ onMounted(() => {
           lineStyle: {
             type: "dashed",
             width: 1,
-            color: colorList[Math.floor(i / 2)],
+            color: colorObj[analogValues.value[i / 2]],
           },
           showSymbol: false,
           emphasis: {
