@@ -72,7 +72,7 @@ const chartInit = () => {
     let myChart = proxy.$echarts.init(document.getElementById(props.chartId));
     option && myChart.setOption(option);
     emitter.on("chart:analog", (value) => {
-        console.log(value);
+        // console.log(value);
         myChart.setOption({
             series: value
         });
