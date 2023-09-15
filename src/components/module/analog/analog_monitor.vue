@@ -7,11 +7,7 @@
       <DoubleGradientAreaLine chartId="analogLine"> </DoubleGradientAreaLine>
     </div>
     <div class="bottom_aside">
-      <a-checkbox-group
-        v-model:value="analogValues"
-        style="width: 100%"
-        @change="handleAnalogLine"
-      >
+      <a-checkbox-group v-model:value="analogValues" style="width: 100%" @change="handleAnalogLine">
         <a-row>
           <a-col :span="5">
             <a-checkbox class="check_1" value="灯丝流">灯丝流</a-checkbox>
@@ -151,6 +147,7 @@ const csData = (analogName) => {
 onMounted(() => {
   emitter.on("set:change", (e) => {
     setList.value = e;
+    handleAnalogLine()
   });
   setTimeout(function () {
     let series = [];

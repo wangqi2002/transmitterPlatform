@@ -6,14 +6,13 @@
 
 <script setup>
 import BottomLineBox from "../../common/bottom_line_box.vue";
-import { ref, onMounted, getCurrentInstance, nextTick } from "vue";
+import { ref, onMounted, getCurrentInstance, nextTick, watch } from "vue";
 import emitter from "../../../units/mittBus"
 
 const { proxy } = getCurrentInstance();
 const props = defineProps({
     chartId: String
 })
-
 let option = {
     backgroundColor: 'rgba(12, 12, 52, 0)',
     tooltip: {
