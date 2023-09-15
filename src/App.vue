@@ -1,12 +1,9 @@
 <template>
-  <div
-    class="container"
-    :style="{
-      transform: `scale(${scale},${scale}) translate(-50%,-50%)`,
-      width: `${width}px`,
-      height: `${height}px`,
-    }"
-  >
+  <div class="container" :style="{
+    transform: `scale(${scale},${scale}) translate(-50%,-50%)`,
+    width: `${width}px`,
+    height: `${height}px`,
+  }">
     <div class="main-wrap">
       <Backdrop></Backdrop>
       <Home></Home>

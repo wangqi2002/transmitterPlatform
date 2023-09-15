@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, getCurrentInstance, nextTick } from "vue";
+import { ref, onMounted, getCurrentInstance, nextTick, watch } from "vue";
 import emitter from "../../../units/mittBus"
 
 const { proxy } = getCurrentInstance();
@@ -17,6 +17,7 @@ const props = defineProps({
     chartId: String,
     options: Object
 })
+let myChart = null;
 let option = {
     color: props.options.color,
     legend: { show: false },
@@ -68,9 +69,23 @@ let option = {
 };
 
 const chartInit = () => {
-    let myChart = proxy.$echarts.init(document.getElementById(props.chartId));
+    if (!myChart) {
+        myChart = proxy.$echarts.init(document.getElementById(props.chartId));
+    }
     option && myChart.setOption(option);
 }
+
+watch(props, (newProps) => {
+    try {
+        option.series[0].name = newProps.options.series[0].name;
+        option.series[0].data = newProps.options.series[0].data;
+        setTimeout(() => {
+            chartInit()
+        }, 500)
+    } catch (error) {
+        console.error(error)
+    }
+});
 
 onMounted(async () => {
     await nextTick(() => {

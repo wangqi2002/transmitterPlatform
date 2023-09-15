@@ -58,16 +58,16 @@ onMounted(() => {
       { value: Math.floor(Math.random() * (100 - 0)), name: '正常' },
       { value: Math.floor(Math.random() * (100 - 0)), name: '故障' }
     ];
-    option1.value.percent = (option1.value.series[0].data[1].value / option1.value.series[0].data[0].value) * 100
-    num1.value = Math.floor(Math.random() * (5 - 0))
+    option1.value.percent = parseInt((option1.value.series[0].data[1].value / option1.value.series[0].data[0].value) * 100)
+    num1.value = Math.floor(Math.random() * (6 - 0))
 
     option2.value.series[0].data = [
       { value: 100, name: '开关量' },
       { value: Math.floor(Math.random() * (100 - 0)), name: '正常' },
       { value: Math.floor(Math.random() * (100 - 0)), name: '故障' }
     ];
-    option2.value.percent = (option2.value.series[0].data[1].value / option2.value.series[0].data[0].value) * 100
-    num2.value = Math.floor(Math.random() * (5 - 0))
+    option2.value.percent = parseInt((option2.value.series[0].data[1].value / option2.value.series[0].data[0].value) * 100)
+    num2.value = Math.floor(Math.random() * (6 - 0))
   });
 });
 </script>

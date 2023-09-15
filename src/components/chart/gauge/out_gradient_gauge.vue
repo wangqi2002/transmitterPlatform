@@ -13,6 +13,7 @@ const props = defineProps({
   chartId: String,
   options: Object,
 });
+let myChart = null;
 let option = {
   title: {
     text: props.options.title.text,
@@ -97,7 +98,6 @@ let option = {
     },
   ],
 };
-let myChart = null;
 
 const chartInit = () => {
   if (!myChart) {

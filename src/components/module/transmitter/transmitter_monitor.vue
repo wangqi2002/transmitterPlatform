@@ -4,20 +4,10 @@
       <MonitorTitle title="XX电子管放大器监测"></MonitorTitle>
     </div>
     <div class="top_aside">
-      <TransmitterFreq
-        name="当前功率"
-        :group="setList"
-        :chartId="chartIds_1"
-        :options="options1"
-      ></TransmitterFreq>
+      <TransmitterFreq name="当前功率" :group="setList" :chartId="chartIds_1" :options="options1"></TransmitterFreq>
     </div>
     <div class="bottom_aside">
-      <TransmitterPower
-        name="当前频率"
-        :group="setList"
-        :chartId="chartIds_2"
-        :options="options2"
-      ></TransmitterPower>
+      <TransmitterPower name="当前频率" :group="setList" :chartId="chartIds_2" :options="options2"></TransmitterPower>
     </div>
   </div>
 </template>
@@ -47,7 +37,7 @@ const options1 = ref([
     ],
     series: [
       {
-        name: "1#",
+        name: "1#机",
         data: [320],
       },
     ],
@@ -61,7 +51,7 @@ const options1 = ref([
     ],
     series: [
       {
-        name: "2#",
+        name: "2#机",
         data: [220],
       },
     ],
@@ -73,14 +63,14 @@ const options2 = ref([
       title: "末级入射功率",
       color:
         "linear-gradient(90deg, rgba(90, 255, 203, 1), rgba(13, 255, 179, 1))",
-      value: "80kW",
+      value: 80,
       schedule: 4,
     },
     {
       title: "末级反射功率",
       color:
         "linear-gradient(90deg, rgba(106, 222, 255, 1), rgba(63, 214, 255, 1))",
-      value: "10kW",
+      value: 10,
       schedule: 5,
     },
   ],
@@ -89,14 +79,14 @@ const options2 = ref([
       title: "末级入射功率",
       color:
         "linear-gradient(90deg, rgba(90, 255, 203, 1), rgba(13, 255, 179, 1))",
-      value: "100kW",
+      value: 100,
       schedule: 5,
     },
     {
       title: "末级反射功率",
       color:
         "linear-gradient(90deg, rgba(106, 222, 255, 1), rgba(63, 214, 255, 1))",
-      value: "19kW",
+      value: 19,
       schedule: 5,
     },
   ],
@@ -105,6 +95,16 @@ const options2 = ref([
 onMounted(() => {
   emitter.on("set:change", (e) => {
     setList.value = e;
+    options1.value[0].series[0].data = [Math.floor(Math.random() * (500 - 0)) + 0];
+    options1.value[1].series[0].data = [Math.floor(Math.random() * (500 - 0)) + 0];
+    options2.value[0][0].value = Math.floor(Math.random() * (100 - 0)) + 0;
+    options2.value[0][0].schedule = Math.floor(Math.random() * (10 - 0)) + 0;
+    options2.value[0][1].value = Math.floor(Math.random() * (100 - 0)) + 0;
+    options2.value[0][1].schedule = Math.floor(Math.random() * (10 - 0)) + 0;
+    options2.value[1][0].value = Math.floor(Math.random() * (100 - 0)) + 0;
+    options2.value[1][0].schedule = Math.floor(Math.random() * (10 - 0)) + 0;
+    options2.value[1][1].value = Math.floor(Math.random() * (100 - 0)) + 0;
+    options2.value[1][1].schedule = Math.floor(Math.random() * (10 - 0)) + 0;
   });
 });
 </script>

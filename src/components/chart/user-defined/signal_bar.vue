@@ -1,6 +1,6 @@
 <template>
     <div class="signal_bar">
-        <span class="freq_text">{{ props.options.value }}</span>
+        <span class="freq_text">{{ props.options.value }}kW</span>
         <div class="chart" :class="chartId">
             <span class="bar" v-for="index in 8"></span>
         </div>
@@ -15,13 +15,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted, getCurrentInstance, nextTick } from "vue";
+import { ref, onMounted, watch } from "vue";
 import emitter from "../../../units/mittBus"
-import { number } from "echarts";
 
-const { proxy } = getCurrentInstance();
 const props = defineProps({
-    name: String,
     chartId: String,
     options: Object
 })
@@ -31,10 +28,10 @@ const backgroundListener = () => {
     el.style.background = props.options.color
 }
 
-const scheduleListener = () => {
+const scheduleListener = (schedule) => {
     let els = document.querySelectorAll(`.${props.chartId} .bar_mark`)
     for (let i = 0; i < els.length; i++) {
-        if (i < props.options.schedule) {
+        if (i < schedule) {
             els[i].style.backgroundColor = 'transparent'
         } else {
             els[i].style.backgroundColor = '#224572'
@@ -42,10 +39,19 @@ const scheduleListener = () => {
     }
 }
 
+watch(props, (newProps) => {
+    try {
+        setTimeout(() => {
+            scheduleListener(newProps.options.schedule)
+        }, 500)
+    } catch (error) {
+        console.error(error)
+    }
+});
 
 onMounted(async () => {
     backgroundListener()
-    scheduleListener()
+    scheduleListener(props.options.schedule)
 })
 </script>
 
