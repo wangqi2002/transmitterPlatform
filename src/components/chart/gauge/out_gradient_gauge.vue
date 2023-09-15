@@ -108,7 +108,6 @@ const chartInit = () => {
 
 watch(props, (newProps) => {
   try {
-    console.log(newProps.options.series[0].data);
     option.title.text = newProps.options.title.text;
     option.series[0].max = newProps.options.series[0].max;
     option.series[0].itemStyle = newProps.options.series[0].itemStyle;

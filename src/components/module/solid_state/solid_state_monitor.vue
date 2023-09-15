@@ -4,18 +4,10 @@
       <MonitorTitle title="固态源监测"></MonitorTitle>
     </div>
     <div class="top_aside">
-      <SolidStateItem
-        :name="setList[0]"
-        :chartId="chartId1"
-        :options="option1"
-      ></SolidStateItem>
+      <SolidStateItem :name="setList[0]" :chartId="chartId1" :options="option1"></SolidStateItem>
     </div>
     <div class="bottom_aside">
-      <SolidStateItem
-        :name="setList[1]"
-        :chartId="chartId2"
-        :options="option2"
-      ></SolidStateItem>
+      <SolidStateItem :name="setList[1]" :chartId="chartId2" :options="option2"></SolidStateItem>
     </div>
   </div>
 </template>

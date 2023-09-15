@@ -6,7 +6,7 @@
 
 <script setup>
 import BottomLineBox from "../../common/bottom_line_box.vue";
-import { ref, onMounted, getCurrentInstance, nextTick } from "vue";
+import { ref, onMounted, getCurrentInstance, nextTick, watch } from "vue";
 
 const { proxy } = getCurrentInstance();
 const props = defineProps({
@@ -14,6 +14,7 @@ const props = defineProps({
     chartId: String,
     options: Object
 })
+let myChart = null;
 
 let option = {
     title: {
@@ -70,11 +71,7 @@ let option = {
             labelLine: {
                 show: false
             },
-            data: [
-                { value: 109, name: '开关量' },
-                { value: 47, name: '正常' },
-                { value: 2, name: '故障' }
-            ]
+            data: props.options.series[0].data
         },
         {
             type: 'pie',
@@ -89,9 +86,22 @@ let option = {
 };
 
 const chartInit = () => {
-    let myChart = proxy.$echarts.init(document.getElementById(props.chartId));
+    if (!myChart) {
+        myChart = proxy.$echarts.init(document.getElementById(props.chartId));
+    }
     option && myChart.setOption(option);
 }
+
+watch(props, (newProps) => {
+    try {
+        option.series[0].data = newProps.options.series[0].data;
+        setTimeout(() => {
+            chartInit()
+        }, 500)
+    } catch (error) {
+        console.error(error)
+    }
+});
 
 onMounted(async () => {
     await nextTick(() => {

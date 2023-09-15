@@ -3,11 +3,11 @@
         <BottomLineBox :name="props.name"></BottomLineBox>
         <div class="condition_item_box">
             <div class="left_aside">
-                <div class="percent">70%</div>
-                <RingGradientPie :chartId="props.chartId" :options="option"></RingGradientPie>
-                <span class="legend_value one">109</span>
-                <span class="legend_value two">47</span>
-                <span class="legend_value three">2</span>
+                <div class="percent">{{ props.options.percent }}%</div>
+                <RingGradientPie :chartId="props.chartId" :options="props.options"></RingGradientPie>
+                <span class="legend_value one">{{ options.series[0].data[0].value }}</span>
+                <span class="legend_value two">{{ options.series[0].data[1].value }}</span>
+                <span class="legend_value three">{{ options.series[0].data[2].value }}</span>
             </div>
             <div class="right_aside">
                 <LightStripWire :chartId="props.chartId" :num="props.num"></LightStripWire>
@@ -24,7 +24,7 @@ import { ref } from "vue";
 const props = defineProps({
     name: String,
     chartId: String,
-    num: String,
+    num: Number,
     options: Object
 })
 

@@ -4,18 +4,10 @@
       <MonitorTitle title="状态监测"></MonitorTitle>
     </div>
     <div class="left_aside">
-      <ConditionItem
-        :name="setList[0]"
-        chartId="cond_1"
-        num="3"
-      ></ConditionItem>
+      <ConditionItem :name="setList[0]" :options="option1" chartId="cond_1" :num="num1"></ConditionItem>
     </div>
     <div class="right_aside">
-      <ConditionItem
-        :name="setList[1]"
-        chartId="cond_2"
-        num="2"
-      ></ConditionItem>
+      <ConditionItem :name="setList[1]" :options="option2" chartId="cond_2" :num="num2"></ConditionItem>
     </div>
   </div>
 </template>
@@ -27,10 +19,55 @@ import { ref, onMounted } from "vue";
 import emitter from "../../../units/mittBus";
 
 const setList = ref(["1#机", "2#机"]);
+const option1 = ref(
+  {
+    series: [
+      {
+        data: [
+          { value: 100, name: '开关量' },
+          { value: 47, name: '正常' },
+          { value: 2, name: '故障' }
+        ]
+      }
+    ],
+    percent: 47
+  }
+);
+const option2 = ref(
+  {
+    series: [
+      {
+        data: [
+          { value: 100, name: '开关量' },
+          { value: 67, name: '正常' },
+          { value: 12, name: '故障' }
+        ]
+      }
+    ],
+    percent: 67
+  }
+);
+const num1 = ref(3)
+const num2 = ref(2)
 
 onMounted(() => {
   emitter.on("set:change", (e) => {
     setList.value = e;
+    option1.value.series[0].data = [
+      { value: 100, name: '开关量' },
+      { value: Math.floor(Math.random() * (100 - 0)), name: '正常' },
+      { value: Math.floor(Math.random() * (100 - 0)), name: '故障' }
+    ];
+    option1.value.percent = (option1.value.series[0].data[1].value / option1.value.series[0].data[0].value) * 100
+    num1.value = Math.floor(Math.random() * (5 - 0))
+
+    option2.value.series[0].data = [
+      { value: 100, name: '开关量' },
+      { value: Math.floor(Math.random() * (100 - 0)), name: '正常' },
+      { value: Math.floor(Math.random() * (100 - 0)), name: '故障' }
+    ];
+    option2.value.percent = (option2.value.series[0].data[1].value / option2.value.series[0].data[0].value) * 100
+    num2.value = Math.floor(Math.random() * (5 - 0))
   });
 });
 </script>

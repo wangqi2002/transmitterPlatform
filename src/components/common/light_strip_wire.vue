@@ -15,15 +15,27 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 
 const props = defineProps({
     chartId: String,
-    num: String
+    num: Number
 })
 
 const lightList = ref(['灯丝', '栅压', '阳压', '帘栅', '出波'])
 const flag = ref([false, false, false, false, false])
+
+watch(props, (newProps) => {
+    try {
+        setTimeout(() => {
+            for (let i = 0; i < newProps.num; i++) {
+                flag.value[i] = true
+            }
+        }, 500)
+    } catch (error) {
+        console.error(error)
+    }
+});
 
 onMounted(() => {
     for (let i = 0; i < props.num; i++) {
