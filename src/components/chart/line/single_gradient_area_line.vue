@@ -70,7 +70,7 @@ let option = {
                 width: 2,
                 color: 'rgb(9,247,173, 1)'
             },
-            // showSymbol: false,
+            showSymbol: false,
             areaStyle: props.options.series[0].areaStyle,
             data: props.options.series[0].data
         }

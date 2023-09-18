@@ -38,7 +38,7 @@ const options1 = ref([
     series: [
       {
         name: "1#机",
-        data: [320],
+        data: [26],
       },
     ],
   },
@@ -52,7 +52,7 @@ const options1 = ref([
     series: [
       {
         name: "2#机",
-        data: [220],
+        data: [22],
       },
     ],
   },

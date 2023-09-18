@@ -72,9 +72,8 @@ const chartInit = () => {
     option && myChart.setOption(option);
     emitter.on("chart:analog", (value) => {
         // console.log(value);
-        myChart.setOption({
-            series: value
-        });
+        option.series = value
+        myChart.setOption(option, true);
     })
 }
 

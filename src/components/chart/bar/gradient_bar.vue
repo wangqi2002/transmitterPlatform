@@ -30,7 +30,8 @@ let option = {
     },
     xAxis: {
         type: 'value',
-        max: 400,
+        max: 40,
+        min: 0,
         axisLabel: {
             show: false
         },
@@ -57,6 +58,7 @@ let option = {
             },
             label: {
                 show: true,
+                formatter: '{c}MHz',
                 color: "#ffffff",
                 position: 'insideRight'
             },
