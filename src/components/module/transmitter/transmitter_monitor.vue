@@ -4,10 +4,10 @@
       <MonitorTitle title="XX电子管放大器监测"></MonitorTitle>
     </div>
     <div class="top_aside">
-      <TransmitterFreq name="当前功率" :group="setList" :chartId="chartIds_1" :options="options1"></TransmitterFreq>
+      <TransmitterFreq name="当前频率" :group="setList" :chartId="chartIds_1" :options="options1"></TransmitterFreq>
     </div>
     <div class="bottom_aside">
-      <TransmitterPower name="当前频率" :group="setList" :chartId="chartIds_2" :options="options2"></TransmitterPower>
+      <TransmitterPower name="当前功率" :group="setList" :chartId="chartIds_2" :options="options2"></TransmitterPower>
     </div>
   </div>
 </template>

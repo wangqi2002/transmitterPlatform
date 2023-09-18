@@ -5,9 +5,9 @@
             <div class="nav_title_txt">
                 <span class="left"></span>
                 发射机智能监测系统
-            </div>
-            <GradientLine></GradientLine> -->
+            </div> -->
             <img class="nav_title_icon" src="../../../assets//icon/app-icon.svg" />
+            <GradientLine></GradientLine>
         </div>
         <div class="nav_tab">
             <div class="nav_tab_item is-active" @click="handleMonitor">监测中心
@@ -113,7 +113,7 @@ const handleSet = (e) => {
         :deep(.gradient_line) {
             height: 5px;
             background: linear-gradient(90deg, rgba(152, 178, 255, 0), rgba(213, 246, 253, 1) 50%, rgba(152, 178, 255, 0));
-            bottom: -3px;
+            bottom: -7px;
         }
     }
 
@@ -140,6 +140,10 @@ const handleSet = (e) => {
         .is-active {
             font-weight: 600;
             color: #E6FF93;
+        }
+
+        :deep(.gradient_line) {
+            bottom: -1px;
         }
     }
 }

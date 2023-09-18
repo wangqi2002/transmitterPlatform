@@ -1,5 +1,6 @@
 <template>
     <div class="monitor_title">
+        <img class="monitor_icon" src="../../assets/icon/monitor_icon.svg" />
         <div class="title">{{ title }}</div>
         <span class="top_right"></span>
         <span class="right_top"></span>
@@ -20,13 +21,18 @@ defineProps(['title'])
     background-color: rgba(58, 126, 227, 0.2);
     position: relative;
 
+    .monitor_icon{
+        float: left;
+        margin-left: 10px;
+    }
+
     .title {
         height: 30px;
         line-height: 27px;
         font-size: 16px;
         font-weight: bold;
         color: #ffffff;
-        margin-left: 35px;
+        margin-left: 45px;
     }
 
     .top_right {
