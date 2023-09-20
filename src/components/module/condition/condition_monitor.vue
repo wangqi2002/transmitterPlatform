@@ -24,13 +24,13 @@ const option1 = ref(
     series: [
       {
         data: [
-          { value: 100, name: '开关量' },
-          { value: 47, name: '正常' },
-          { value: 2, name: '故障' }
+          { value: 108, name: '开关量' },
+          { value: 88, name: '正常' },
+          { value: 20, name: '故障' }
         ]
       }
     ],
-    percent: 47
+    percent: 81
   }
 );
 const option2 = ref(
@@ -38,36 +38,38 @@ const option2 = ref(
     series: [
       {
         data: [
-          { value: 100, name: '开关量' },
+          { value: 108, name: '开关量' },
           { value: 67, name: '正常' },
-          { value: 12, name: '故障' }
+          { value: 41, name: '故障' }
         ]
       }
     ],
-    percent: 67
+    percent: 62
   }
 );
-const num1 = ref(3)
-const num2 = ref(2)
+const num1 = ref(4)
+const num2 = ref(3)
 
 onMounted(() => {
   emitter.on("set:change", (e) => {
     setList.value = e;
+    let v1 = Math.floor(Math.random() * (108 - 60)) + 60
+    let v2 = Math.floor(Math.random() * (108 - 60)) + 60
     option1.value.series[0].data = [
-      { value: 100, name: '开关量' },
-      { value: Math.floor(Math.random() * (100 - 0)), name: '正常' },
-      { value: Math.floor(Math.random() * (100 - 0)), name: '故障' }
+      { value: 108, name: '开关量' },
+      { value: v1, name: '正常' },
+      { value: 108 - v1, name: '故障' }
     ];
     option1.value.percent = parseInt((option1.value.series[0].data[1].value / option1.value.series[0].data[0].value) * 100)
-    num1.value = Math.floor(Math.random() * (6 - 0))
+    num1.value = Math.floor(option1.value.percent / 20)
 
     option2.value.series[0].data = [
-      { value: 100, name: '开关量' },
-      { value: Math.floor(Math.random() * (100 - 0)), name: '正常' },
-      { value: Math.floor(Math.random() * (100 - 0)), name: '故障' }
+      { value: 108, name: '开关量' },
+      { value: v2, name: '正常' },
+      { value: 108 - v2, name: '故障' }
     ];
     option2.value.percent = parseInt((option2.value.series[0].data[1].value / option2.value.series[0].data[0].value) * 100)
-    num2.value = Math.floor(Math.random() * (6 - 0))
+    num2.value = Math.floor(option2.value.percent / 20)
   });
 });
 </script>

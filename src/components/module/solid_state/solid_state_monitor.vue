@@ -133,7 +133,7 @@ const option2 = ref([
 ]);
 
 onMounted(() => {
-  emitter.on("set:change", (e) => {
+  emitter.on("set:change", (e) => { 
     setList.value = e;
     option1.value[0].series[0].data = [Math.floor(Math.random() * (8000 - 0)) + 0];
     option1.value[1].series[0].data = [Math.floor(Math.random() * (800 - 0)) + 0];

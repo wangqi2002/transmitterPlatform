@@ -17,11 +17,22 @@ import MonitorTitle from "../../common/monitor_title.vue";
 import SingleGradientAreaLine from "../../chart/line/single_gradient_area_line.vue";
 import { ref, onMounted, getCurrentInstance } from "vue";
 import emitter from "../../../units/mittBus"
-import { getRandomInt, formatter } from "../../../units/tools"
+import { getRandomInt, formatter, getBeforeTime } from "../../../units/tools"
 
 const { proxy } = getCurrentInstance();
 
-const option1 = {
+const option1 = ref({
+    xAxis: [
+        {
+            data: []
+        }
+    ],
+    yAxis: [
+        {
+            max: 40,
+            min: 10
+        }
+    ],
     series: [
         {
             name: '温度',
@@ -39,11 +50,22 @@ const option1 = {
                     }
                 ])
             },
-            data: [140, 232, 101, 264, 90, 340, 250]
+            data: []
         }
     ]
-};
-const option2 = {
+});
+const option2 = ref({
+    xAxis: [
+        {
+            data: []
+        }
+    ],
+    yAxis: [
+        {
+            max: 35,
+            min: 65
+        }
+    ],
     series: [
         {
             name: '湿度',
@@ -60,10 +82,59 @@ const option2 = {
                     }
                 ])
             },
-            data: [80, 120, 181, 164, 290, 250, 340]
+            data: []
         }
     ]
+});
+
+const csData = (dataArr, flag) => {
+    let obj = dataArr;
+    if (flag) {
+        obj.shift()
+        let num = getRandomInt(45, 55)
+        obj.push({ label: `${num}%`, value: num });
+    } else {
+        obj.shift()
+        let num = getRandomInt(20, 30)
+        obj.push({ label: `${num}&#8451;`, value: num });
+    }
+    return obj;
 };
+
+onMounted(() => {
+    setTimeout(function () {
+        let date = new Date()
+        let xData = [getBeforeTime(date, 5), getBeforeTime(date, 4), getBeforeTime(date, 3), getBeforeTime(date, 2), getBeforeTime(date, 1), getBeforeTime(date, 0)]
+        option1.value.xAxis[0].data = xData
+        option1.value.series[0].data = [
+            { label: '25&#8451;', value: 25 },
+            { label: '25&#8451;', value: 25 },
+            { label: '25&#8451;', value: 25 },
+            { label: '25&#8451;', value: 25 },
+            { label: '25&#8451;', value: 25 },
+            { label: '25&#8451;', value: 25 },
+        ]
+        option2.value.xAxis[0].data = xData
+        option2.value.series[0].data = [
+            { label: '50%', value: 50 },
+            { label: '50%', value: 50 },
+            { label: '50%', value: 50 },
+            { label: '50%', value: 50 },
+            { label: '50%', value: 50 },
+            { label: '50%', value: 50 },
+        ]
+    }, 300);
+    setInterval(function () {
+        let date = option1.value.xAxis[0].data[option1.value.xAxis[0].data.length - 1]
+        let xData = option1.value.xAxis[0].data
+        xData.shift()
+        xData.push(getBeforeTime(date, -1))
+        option1.value.xAxis[0].data = xData
+        option2.value.xAxis[0].data = xData
+        option1.value.series[0].data = csData(option1.value.series[0].data, 0)
+        option2.value.series[0].data = csData(option2.value.series[0].data, 1)
+    }, 60000);
+});
 </script>
 
 <style scoped lang="scss">

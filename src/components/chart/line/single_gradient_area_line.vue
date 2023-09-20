@@ -7,7 +7,7 @@
 
 <script setup>
 import BottomLineBox from "../../common/bottom_line_box.vue";
-import { ref, onMounted, getCurrentInstance, nextTick } from "vue";
+import { ref, onMounted, getCurrentInstance, nextTick, watch } from "vue";
 import emitter from "../../../units/mittBus"
 
 const { proxy } = getCurrentInstance();
@@ -26,11 +26,16 @@ let option = {
             label: {
                 backgroundColor: '#000000'
             }
+        },
+        formatter: function (params) {
+            let res = "";
+            res = "时间:  " + params[0].axisValue + "<br/>" + params[0].marker + "值:  " + params[0].data.label;
+            return res;
         }
     },
     grid: {
-        left: '5%',
-        right: '5%',
+        left: '6%',
+        right: '6%',
         top: '10%',
         bottom: '15%',
         containLabel: false
@@ -42,9 +47,17 @@ let option = {
             axisLabel: {
                 //坐标轴 标签
                 show: true, //是否显示
-                color: '#B5B5C5'
+                color: '#B5B5C5',
+                formatter: function (value, index) {
+                    // 格式化成月/日，只在第一个刻度显示年份
+                    var date = new Date(value);
+                    var h = date.getHours() < 10 ? ('0' + date.getHours()) : date.getHours()
+                    var f = date.getMinutes() < 10 ? ('0' + date.getMinutes()) : date.getMinutes()
+                    var formatdate = h + ":" + f;
+                    return formatdate
+                }
             },
-            data: ['0', '2', '4', '6', '8', '10']
+            data: props.options.xAxis[0].data
         }
     ],
     yAxis: [
@@ -58,7 +71,9 @@ let option = {
                 lineStyle: {
                     color: 'rgba(44, 78, 175, 0.8)'
                 }
-            }
+            },
+            max: props.options.yAxis[0].max,
+            min: props.options.yAxis[0].min
         }
     ],
     series: [
@@ -76,11 +91,27 @@ let option = {
         }
     ]
 };
+let myChart = null;
 
 const chartInit = () => {
-    let myChart = proxy.$echarts.init(document.getElementById(props.chartId));
+    if (!myChart) {
+        myChart = proxy.$echarts.init(document.getElementById(props.chartId));
+    }
     option && myChart.setOption(option);
 }
+
+watch(props, (newProps) => {
+    try {
+        option.xAxis[0].data = newProps.options.xAxis[0].data;
+        option.series[0].data = newProps.options.series[0].data;
+        setTimeout(() => {
+            chartInit()
+        }, 500)
+    } catch (error) {
+        console.error(error)
+    }
+});
+
 
 onMounted(async () => {
     await nextTick(() => {

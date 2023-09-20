@@ -28,8 +28,16 @@ const flag = ref([false, false, false, false, false])
 watch(props, (newProps) => {
     try {
         setTimeout(() => {
+            flag.value = [false, false, false, false, false]
             for (let i = 0; i < newProps.num; i++) {
                 flag.value[i] = true
+            }
+            let lightStrips = document.getElementsByClassName(props.chartId)
+            for (let i = 0; i < lightStrips.length; i++) {
+                lightStrips[i].className = lightStrips[i].className.replace(' suc', "")
+            }
+            for (let i = 0; i < newProps.num - 1; i++) {
+                lightStrips[i].className = lightStrips[i].className + ' suc'
             }
         }, 500)
     } catch (error) {
@@ -40,6 +48,13 @@ watch(props, (newProps) => {
 onMounted(() => {
     for (let i = 0; i < props.num; i++) {
         flag.value[i] = true
+    }
+    let lightStrips = document.getElementsByClassName(props.chartId)
+    for (let i = 0; i < lightStrips.length; i++) {
+        lightStrips[i].className = lightStrips[i].className.replace(' suc', "")
+    }
+    for (let i = 0; i < props.num - 1; i++) {
+        lightStrips[i].className = lightStrips[i].className + ' suc'
     }
 })
 </script>
