@@ -71,6 +71,41 @@ onMounted(() => {
     option2.value.percent = parseInt((option2.value.series[0].data[1].value / option2.value.series[0].data[0].value) * 100)
     num2.value = Math.floor(option2.value.percent / 20)
   });
+  setInterval(() => {
+    let v1 = Math.floor(Math.random() * (15 - 5)) + 5
+    let v2 = Math.floor(Math.random() * (15 - 5)) + 5
+    if (option1.value.series[0].data[1].value + v1 <= 108) {
+      option1.value.series[0].data = [
+        { value: 108, name: '开关量' },
+        { value: option1.value.series[0].data[1].value + v1, name: '正常' },
+        { value: option1.value.series[0].data[2].value - v1, name: '故障' }
+      ];
+    } else {
+      option1.value.series[0].data = [
+        { value: 108, name: '开关量' },
+        { value: option1.value.series[0].data[1].value - v1*2, name: '正常' },
+        { value: option1.value.series[0].data[2].value + v1*2, name: '故障' }
+      ];
+    }
+    option1.value.percent = parseInt((option1.value.series[0].data[1].value / option1.value.series[0].data[0].value) * 100)
+    num1.value = Math.floor(option1.value.percent / 20)
+
+    if (option2.value.series[0].data[1].value + v2 <= 108) {
+      option2.value.series[0].data = [
+        { value: 108, name: '开关量' },
+        { value: option2.value.series[0].data[1].value + v2, name: '正常' },
+        { value: option2.value.series[0].data[2].value - v2, name: '故障' }
+      ];
+    } else {
+      option2.value.series[0].data = [
+        { value: 108, name: '开关量' },
+        { value: option2.value.series[0].data[1].value - v2*2, name: '正常' },
+        { value: option2.value.series[0].data[2].value + v2*2, name: '故障' }
+      ];
+    }
+    option2.value.percent = parseInt((option2.value.series[0].data[1].value / option2.value.series[0].data[0].value) * 100)
+    num2.value = Math.floor(option2.value.percent / 20)
+  }, 10000)
 });
 </script>
 

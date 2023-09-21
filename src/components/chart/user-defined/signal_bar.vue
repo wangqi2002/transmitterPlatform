@@ -2,11 +2,11 @@
     <div class="signal_bar">
         <span class="freq_text">{{ props.options.value }}kW</span>
         <div class="chart" :class="chartId">
-            <span class="bar" v-for="index in 8"></span>
+            <span class="bar" v-for="index in 9"></span>
         </div>
         <div class="chart_mark" :class="chartId">
             <div class="mark"></div>
-            <span class="bar_mark" v-for="index in 9"></span>
+            <span class="bar_mark" v-for="index in 10"></span>
         </div>
         <div class="title">
             {{ props.options.title }}
@@ -59,9 +59,9 @@ onMounted(async () => {
 $markColor: rgba(16, 49, 92, 1);
 
 .signal_bar {
-    width: calc(100% - 24px);
+    width: calc(100% - 20px);
     height: calc(100% - 10px);
-    margin: 5px 12px;
+    margin: 5px 10px;
     color: #ffffff;
     position: relative;
 
@@ -76,7 +76,7 @@ $markColor: rgba(16, 49, 92, 1);
             display: inline-block;
             height: 100%;
             width: 4px;
-            margin-left: 11px;
+            margin-left: 10px;
             background-color: $markColor;
         }
     }
@@ -91,13 +91,13 @@ $markColor: rgba(16, 49, 92, 1);
         .bar_mark {
             display: inline-block;
             height: 100%;
-            width: 11px;
+            width: 10px;
             margin-right: 4px;
             background-color: #224572;
         }
 
         .bar_mark:last-child {
-            width: 13px;
+            width: 11px;
             margin-right: 0px;
         }
     }

@@ -18,8 +18,8 @@ const initialize = (url) => {
     spline.load(url);
 };
 onMounted(() => {
-    // initialize('./splineModle/scene.splinecode')
-    initialize('./splineModle/scene2.splinecode')
+    initialize('./splineModle/scene.splinecode')
+    // initialize('./splineModle/scene2.splinecode')
 });
 </script>
 <style scoped lang="scss">

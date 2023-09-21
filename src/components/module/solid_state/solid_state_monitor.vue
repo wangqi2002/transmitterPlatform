@@ -133,13 +133,37 @@ const option2 = ref([
 ]);
 
 onMounted(() => {
-  emitter.on("set:change", (e) => { 
+  emitter.on("set:change", (e) => {
     setList.value = e;
     option1.value[0].series[0].data = [Math.floor(Math.random() * (8000 - 0)) + 0];
     option1.value[1].series[0].data = [Math.floor(Math.random() * (800 - 0)) + 0];
     option2.value[0].series[0].data = [Math.floor(Math.random() * (8000 - 0)) + 0];
     option2.value[1].series[0].data = [Math.floor(Math.random() * (800 - 0)) + 0];
   });
+  setInterval(() => {
+    let v1 = Math.floor(Math.random() * (200 - 20)) + 20
+    let v2 = Math.floor(Math.random() * (30 - 10)) + 10
+    if (option1.value[0].series[0].data[0] + v1 < 7000) {
+      option1.value[0].series[0].data = [option1.value[0].series[0].data[0] + v1];
+    } else {
+      option1.value[0].series[0].data = [option1.value[0].series[0].data[0] - v1];
+    }
+    if (option1.value[1].series[0].data[0] + v2 < 700) {
+      option1.value[1].series[0].data = [option1.value[1].series[0].data[0] + v2];
+    } else {
+      option1.value[1].series[0].data = [option1.value[1].series[0].data[0] - v2];
+    }
+    if (option2.value[0].series[0].data[0] + v1 < 7000) {
+      option2.value[0].series[0].data = [option2.value[0].series[0].data[0] + v1];
+    } else {
+      option2.value[0].series[0].data = [option2.value[0].series[0].data[0] - v1];
+    }
+    if (option2.value[1].series[0].data[0] + v2 < 700) {
+      option2.value[1].series[0].data = [option2.value[1].series[0].data[0] + v2];
+    } else {
+      option2.value[1].series[0].data = [option2.value[1].series[0].data[0] - v2];
+    }
+  }, 10000)
 });
 </script>
 

@@ -113,7 +113,7 @@ const handleSet = (e) => {
         :deep(.gradient_line) {
             height: 5px;
             background: linear-gradient(90deg, rgba(152, 178, 255, 0), rgba(213, 246, 253, 1) 50%, rgba(152, 178, 255, 0));
-            bottom: -7px;
+            bottom: -8px;
         }
     }
 

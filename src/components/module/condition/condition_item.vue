@@ -56,11 +56,13 @@ const option = { name: 'chart' }
             position: relative;
 
             .percent {
+                width: 52px;
+                text-align: center;
                 position: absolute;
                 color: #32D0FF;
-                font-size: 25px;
-                left: 42px;
-                top: 32px;
+                font-size: 22px;
+                left: 38px;
+                top: 33px;
                 z-index: 10;
             }
 
