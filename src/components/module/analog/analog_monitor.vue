@@ -91,8 +91,9 @@ let colorObj = {
   帘栅压: "rgba(106, 156, 255, 1)",
   反射功率: "rgba(255, 129, 204, 1)",
 };
+let series = [];
 const handleAnalogLine = () => {
-  let series = [];
+  series = [];
   for (let i = 0; i < analogValues.value.length; i++) {
     let list = setData(analogValues.value[i]);
     series.push(list[0]);
@@ -150,7 +151,7 @@ onMounted(() => {
     handleAnalogLine()
   });
   setTimeout(function () {
-    let series = [];
+    series = [];
     let data = [
       {
         data: [
@@ -309,7 +310,18 @@ onMounted(() => {
       }
     }
     emitter.emit("chart:analog", series);
-  }, 2000);
+  }, 1500);
+  setInterval(function () {
+    const date = new Date();
+    let time = date.getHours() + ":" + date.getMinutes();
+    for (let i = 0; i < series.length; i++) {
+      let obj = series[i].data.shift();
+      obj.time = time;
+      obj.value = getRandomInt(100, 800);
+      series[i].data.push(obj);
+    }
+    emitter.emit("chart:analog", series);
+  }, 10000);
 });
 </script>
 
