@@ -25,7 +25,7 @@ let option = {
         },
         formatter: function (params) {
             let res = "";
-            res = params.seriesName + "<br/>" + "日期:  " + params.data.time + "<br/>" + params.marker + params.data.name + ":  " + params.data.value;
+            res = params.seriesName + "<br/>" + "时间:  " + params.data.time + "<br/>" + params.marker + params.data.name + ":  " + params.data.value;
             return res;
         }
     },

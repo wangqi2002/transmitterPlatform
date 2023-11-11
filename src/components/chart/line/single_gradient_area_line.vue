@@ -29,7 +29,7 @@ let option = {
         },
         formatter: function (params) {
             let res = "";
-            res = "时间:  " + params[0].axisValue + "<br/>" + params[0].marker + "值:  " + params[0].data.label;
+            res = "时间:  " + params[0].axisValue + "<br/>" + "值:  " + params[0].data.label;
             return res;
         }
     },

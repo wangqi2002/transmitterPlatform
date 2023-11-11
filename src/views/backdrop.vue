@@ -7,6 +7,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { Application } from "@splinetool/runtime";
+import emitter from "../units/mittBus"
 
 let canvas = null;
 let spline = null;
@@ -15,11 +16,26 @@ const initialize = (url) => {
     canvas = document.getElementById("main_spline");
 
     spline = new Application(canvas);
-    spline.load(url);
+    spline.load(url).then(() => {
+        // cube.current = spline.findObjectByName("main_control_unit2");
+
+        spline.addEventListener("mouseDown", (e) => {
+            if (e.target.name == "POWER") {
+                console.log("POWER")
+            } else if (e.target.name == "CABLNET") {
+                console.log("CABLNET")
+            } else if (e.target.name == "TRANSMLTTER") {
+                console.log("TRANSMLTTER")
+            }
+        });
+    });
 };
 onMounted(() => {
-    // initialize('./splineModle/scene.splinecode')
-    initialize('./splineModle/scene2.splinecode')
+    initialize('./splineModle/scene.splinecode')
+    // initialize('./splineModle/scene2.splinecode')
+    emitter.on("change:vackdrop", (value) => {
+        initialize(value)
+    })
 });
 </script>
 <style scoped lang="scss">

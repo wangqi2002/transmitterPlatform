@@ -23,6 +23,7 @@
 import Navigation from "./navigation.vue"
 import MultipleSelect from "../../common/multiple_select.vue"
 import { ref, onMounted, getCurrentInstance } from "vue";
+import emitter from "../../../units/mittBus"
 
 const { proxy } = getCurrentInstance();
 
@@ -36,24 +37,28 @@ const handleOne = () => {
     flagTwo.value = false
     flagThree.value = false
     flagFour.value = false
+    emitter.emit("change:vackdrop", "./splineModle/scene.splinecode");
 }
 const handleTwo = () => {
     flagOne.value = false
     flagTwo.value = true
     flagThree.value = false
     flagFour.value = false
+    emitter.emit("change:vackdrop", "./splineModle/scene-t.splinecode");
 }
 const handleThree = () => {
     flagOne.value = false
     flagTwo.value = false
     flagThree.value = true
     flagFour.value = false
+    emitter.emit("change:vackdrop", "./splineModle/scene-c.splinecode");
 }
 const handleFour = () => {
     flagOne.value = false
     flagTwo.value = false
     flagThree.value = false
     flagFour.value = true
+    emitter.emit("change:vackdrop", "./splineModle/scene-p.splinecode");
 }
 
 </script>
